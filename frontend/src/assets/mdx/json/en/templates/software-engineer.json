@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "title": "Software Engineer Resume Template",
+    "templateId": "template-modern-1",
+    "seo_route": "/templates/en/software-engineer",
+    "route": "/app/resume/new?template=template-modern-1",
+    "description": "Professional software engineer resume template with modern design",
+    "locale": "en",
+    "category": "technology",
+    "level": "senior"
+  },
+  "body": "\n# Software Engineer Resume Template\n\nCreate a professional software engineer resume with our modern template. Perfect for senior developers, team leads, and engineering managers.\n\n## Key Features\n\n- **ATS-Friendly**: Optimized for applicant tracking systems\n- **Modern Design**: Clean, professional layout\n- **Customizable**: Easy to adapt to your experience\n- **Technical Focus**: Highlights skills and projects\n\n## What to Include\n\n1. **Professional Summary**: Brief overview of your experience and expertise\n2. **Technical Skills**: Programming languages, frameworks, and tools\n3. **Work Experience**: Focus on achievements and impact\n4. **Education**: Degrees and relevant certifications\n5. **Projects**: Notable projects with quantifiable results\n\n## Example Bullet Points\n\n- Led team of 5 developers in building scalable microservices architecture\n- Improved application performance by 40% through code optimization\n- Implemented CI/CD pipeline reducing deployment time by 60%\n- Mentored junior developers and conducted code reviews\n\n## Tips for Success\n\nUse action verbs and quantify your achievements. Focus on the impact you made, not just your responsibilities.\n"
+}

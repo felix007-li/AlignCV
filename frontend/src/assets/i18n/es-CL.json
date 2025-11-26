@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "resume": "Currículum",
+    "cover": "Carta de presentación",
+    "pricing": "Precios",
+    "faq": "FAQ",
+    "dashboard": "Panel"
+  },
+  "home": {
+    "hero": "Crea CVs y cartas listos para el trabajo",
+    "cta": "Empieza gratis →",
+    "how": "Cómo funciona"
+  },
+  "app": {
+    "dashboard": "Panel",
+    "resume": "Currículum",
+    "cover": "Carta de presentación",
+    "newResume": "Nuevo currículum",
+    "newCover": "Nueva carta de presentación"
+  },
+  "seo": {
+    "loading": "Cargando contenido...",
+    "notFound": "Contenido no encontrado",
+    "goHome": "Volver al inicio",
+    "createWithTemplate": "Crear currículum con esta plantilla"
+  }
+}

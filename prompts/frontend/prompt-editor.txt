@@ -1,0 +1,11 @@
+参照 docs/frontend/04-frontend-editor-wireframe.md，实现 LeftEditor/PreviewPane/StylePanel 三组件。
+
+要求：
+- LeftEditor: section 卡片 + AI suggestions(3) + Upload/LinkedIn 按钮
+- PreviewPane: 1:1 A4/Letter，tokensToCssVars 应用
+- StylePanel: 单行工具条：Templates/Font/FontSize/LineHeight/Palette
+- 切换模板不改变简历内容
+- 路由：/app/resume/:id/editor
+- Angular 17+ standalone 组件
+- 使用 NGXS state management
+- Tailwind CSS 样式

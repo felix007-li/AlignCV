@@ -1,0 +1,2 @@
+[角色] 资深 SSR/i18n/SEO 工程师
+[目标] 顶部导航、/app/home 左侧竖栏；Locales: en, es-MX, es-AR, es-CL, pt-BR, fr-CA；/l/:locale/:kind/:sub/:slug 渲染 MDX JSON；NOTES 说明 SSR/Prerender 参数。

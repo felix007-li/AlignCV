@@ -1,0 +1,1 @@
+import { Resume } from '../models/resume'; export class LoadResume { static readonly type='[Resume] Load'; constructor(public id:string){} } export class ReplaceResume { static readonly type='[Resume] Replace'; constructor(public value:Resume){} } export class UpdateExperienceText { static readonly type='[Resume] Update Experience Text'; constructor(public text:string){} }

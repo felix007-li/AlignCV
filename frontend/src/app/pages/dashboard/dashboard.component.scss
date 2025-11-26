@@ -1,0 +1,5 @@
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.card{ border:1px solid #d1d5db; border-radius:12px; padding:16px; background:#fff; }
+.btn{ display:inline-flex; padding:8px 12px; background:#2563eb; color:#fff; text-decoration:none; border-radius:8px; margin-top:8px; }
+.list{ list-style:none; padding:0; }
+.list li{ padding:10px; border:1px solid #e5e7eb; border-radius:10px; margin:8px 0; background:#fff; }

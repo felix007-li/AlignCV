@@ -1,0 +1,2 @@
+[角色] 内容工程师 + SEO 策略
+[目标] 生成 80+ MDX（locale×行业×城市），frontmatter 完整；脚本 mdx-to-json.mjs / merge-prerender-routes.mjs；NOTES 说明构建命令与参数。

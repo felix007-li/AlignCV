@@ -1,0 +1,11 @@
+<div class="card">
+  <h4>Personal details</h4>
+  <div class="grid two">
+    <label><span>Name</span><input [value]="model?.name" (input)="modelChange.emit({...model, name: ($event.target as HTMLInputElement).value})"/></label>
+    <label><span>Email address</span><input [value]="model?.email" (input)="modelChange.emit({...model, email: ($event.target as HTMLInputElement).value})"/></label>
+  </div>
+  <div class="grid two">
+    <label><span>Phone number</span><input [value]="model?.phone" (input)="modelChange.emit({...model, phone: ($event.target as HTMLInputElement).value})"/></label>
+    <label><span>City</span><input [value]="model?.city" (input)="modelChange.emit({...model, city: ($event.target as HTMLInputElement).value})"/></label>
+  </div>
+</div>

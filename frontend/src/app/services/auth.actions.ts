@@ -1,0 +1,1 @@
+export class LoginEmail { static readonly type='[Auth] Login Email'; constructor(public email:string){} } export class LoadMe { static readonly type='[Auth] Load Me'; } export class Logout { static readonly type='[Auth] Logout'; }

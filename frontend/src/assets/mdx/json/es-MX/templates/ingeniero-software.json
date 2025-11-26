@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "title": "Plantilla de CV para Ingeniero de Software",
+    "templateId": "template-modern-1",
+    "seo_route": "/templates/es-MX/ingeniero-software",
+    "route": "/app/resume/new?template=template-modern-1&locale=es-MX",
+    "description": "Plantilla profesional de currículum para ingeniero de software",
+    "locale": "es-MX",
+    "category": "tecnologia",
+    "level": "senior"
+  },
+  "body": "\n# Plantilla de CV para Ingeniero de Software\n\nCrea un currículum profesional de ingeniero de software con nuestra plantilla moderna. Perfecta para desarrolladores senior, líderes de equipo y gerentes de ingeniería.\n\n## Características Principales\n\n- **Compatible con ATS**: Optimizado para sistemas de seguimiento de candidatos\n- **Diseño Moderno**: Diseño limpio y profesional\n- **Personalizable**: Fácil de adaptar a tu experiencia\n- **Enfoque Técnico**: Destaca habilidades y proyectos\n\n## Qué Incluir\n\n1. **Resumen Profesional**: Breve descripción de tu experiencia y expertise\n2. **Habilidades Técnicas**: Lenguajes de programación, frameworks y herramientas\n3. **Experiencia Laboral**: Enfócate en logros e impacto\n4. **Educación**: Títulos y certificaciones relevantes\n5. **Proyectos**: Proyectos destacados con resultados cuantificables\n\n## Ejemplos de Logros\n\n- Lideré equipo de 5 desarrolladores en la construcción de arquitectura de microservicios escalable\n- Mejoré el rendimiento de la aplicación en un 40% mediante optimización de código\n- Implementé pipeline de CI/CD reduciendo el tiempo de despliegue en 60%\n- Mentoricé desarrolladores junior y realicé revisiones de código\n\n## Consejos para el Éxito\n\nUsa verbos de acción y cuantifica tus logros. Enfócate en el impacto que generaste, no solo en tus responsabilidades.\n"
+}

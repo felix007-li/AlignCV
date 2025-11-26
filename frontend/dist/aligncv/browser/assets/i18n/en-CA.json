@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Home",
+    "resume": "Resume",
+    "cover": "Cover Letter",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "dashboard": "Dashboard"
+  },
+  "home": {
+    "hero": "Build job‑ready resumes & cover letters",
+    "cta": "Start for free →",
+    "how": "How it works"
+  },
+  "app": {
+    "dashboard": "Dashboard",
+    "resume": "Resume",
+    "cover": "Cover Letter",
+    "newResume": "New Resume",
+    "newCover": "New Cover Letter"
+  },
+  "seo": {
+    "loading": "Loading content...",
+    "notFound": "Content Not Found",
+    "goHome": "Go to Home",
+    "createWithTemplate": "Create Resume with This Template"
+  }
+}

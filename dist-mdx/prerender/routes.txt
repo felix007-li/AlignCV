@@ -1,0 +1,3 @@
+/templates/en/marketing-manager
+/templates/en/software-engineer
+/templates/es-MX/ingeniero-software

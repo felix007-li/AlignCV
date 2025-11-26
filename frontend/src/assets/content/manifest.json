@@ -1,0 +1,720 @@
+{
+  "generatedAt": "2025-11-18T21:32:34.475Z",
+  "total": 102,
+  "items": [
+    {
+      "kind": "examples",
+      "locale": "en",
+      "role": "backend-developer",
+      "path": "examples/en/backend-developer.json",
+      "url": "/l/en/examples/backend-developer"
+    },
+    {
+      "kind": "examples",
+      "locale": "en",
+      "role": "data-scientist",
+      "path": "examples/en/data-scientist.json",
+      "url": "/l/en/examples/data-scientist"
+    },
+    {
+      "kind": "examples",
+      "locale": "en",
+      "role": "devops-engineer",
+      "path": "examples/en/devops-engineer.json",
+      "url": "/l/en/examples/devops-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "en",
+      "role": "marketing-manager",
+      "path": "examples/en/marketing-manager.json",
+      "url": "/l/en/examples/marketing-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "en",
+      "role": "product-manager",
+      "path": "examples/en/product-manager.json",
+      "url": "/l/en/examples/product-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "en",
+      "role": "ui-designer",
+      "path": "examples/en/ui-designer.json",
+      "url": "/l/en/examples/ui-designer"
+    },
+    {
+      "kind": "examples",
+      "locale": "en-CA",
+      "role": "data-analyst",
+      "path": "examples/en-CA/data-analyst.json",
+      "url": "/l/en-CA/examples/data-analyst"
+    },
+    {
+      "kind": "examples",
+      "locale": "en-CA",
+      "role": "qa-engineer",
+      "path": "examples/en-CA/qa-engineer.json",
+      "url": "/l/en-CA/examples/qa-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "en-CA",
+      "role": "software-engineer",
+      "path": "examples/en-CA/software-engineer.json",
+      "url": "/l/en-CA/examples/software-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "en-CA",
+      "role": "ux-designer",
+      "path": "examples/en-CA/ux-designer.json",
+      "url": "/l/en-CA/examples/ux-designer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "backend-developer",
+      "path": "examples/es-AR/backend-developer.json",
+      "url": "/l/es-AR/examples/backend-developer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "data-analyst",
+      "path": "examples/es-AR/data-analyst.json",
+      "url": "/l/es-AR/examples/data-analyst"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "data-scientist",
+      "path": "examples/es-AR/data-scientist.json",
+      "url": "/l/es-AR/examples/data-scientist"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "devops-engineer",
+      "path": "examples/es-AR/devops-engineer.json",
+      "url": "/l/es-AR/examples/devops-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "marketing-manager",
+      "path": "examples/es-AR/marketing-manager.json",
+      "url": "/l/es-AR/examples/marketing-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "product-manager",
+      "path": "examples/es-AR/product-manager.json",
+      "url": "/l/es-AR/examples/product-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "qa-engineer",
+      "path": "examples/es-AR/qa-engineer.json",
+      "url": "/l/es-AR/examples/qa-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "software-engineer",
+      "path": "examples/es-AR/software-engineer.json",
+      "url": "/l/es-AR/examples/software-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "ui-designer",
+      "path": "examples/es-AR/ui-designer.json",
+      "url": "/l/es-AR/examples/ui-designer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-AR",
+      "role": "ux-designer",
+      "path": "examples/es-AR/ux-designer.json",
+      "url": "/l/es-AR/examples/ux-designer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "backend-developer",
+      "path": "examples/es-CL/backend-developer.json",
+      "url": "/l/es-CL/examples/backend-developer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "data-analyst",
+      "path": "examples/es-CL/data-analyst.json",
+      "url": "/l/es-CL/examples/data-analyst"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "data-scientist",
+      "path": "examples/es-CL/data-scientist.json",
+      "url": "/l/es-CL/examples/data-scientist"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "devops-engineer",
+      "path": "examples/es-CL/devops-engineer.json",
+      "url": "/l/es-CL/examples/devops-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "marketing-manager",
+      "path": "examples/es-CL/marketing-manager.json",
+      "url": "/l/es-CL/examples/marketing-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "product-manager",
+      "path": "examples/es-CL/product-manager.json",
+      "url": "/l/es-CL/examples/product-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "qa-engineer",
+      "path": "examples/es-CL/qa-engineer.json",
+      "url": "/l/es-CL/examples/qa-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "software-engineer",
+      "path": "examples/es-CL/software-engineer.json",
+      "url": "/l/es-CL/examples/software-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "ui-designer",
+      "path": "examples/es-CL/ui-designer.json",
+      "url": "/l/es-CL/examples/ui-designer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-CL",
+      "role": "ux-designer",
+      "path": "examples/es-CL/ux-designer.json",
+      "url": "/l/es-CL/examples/ux-designer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-MX",
+      "role": "data-analyst",
+      "path": "examples/es-MX/data-analyst.json",
+      "url": "/l/es-MX/examples/data-analyst"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-MX",
+      "role": "data-scientist",
+      "path": "examples/es-MX/data-scientist.json",
+      "url": "/l/es-MX/examples/data-scientist"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-MX",
+      "role": "devops-engineer",
+      "path": "examples/es-MX/devops-engineer.json",
+      "url": "/l/es-MX/examples/devops-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-MX",
+      "role": "marketing-manager",
+      "path": "examples/es-MX/marketing-manager.json",
+      "url": "/l/es-MX/examples/marketing-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-MX",
+      "role": "product-manager",
+      "path": "examples/es-MX/product-manager.json",
+      "url": "/l/es-MX/examples/product-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-MX",
+      "role": "qa-engineer",
+      "path": "examples/es-MX/qa-engineer.json",
+      "url": "/l/es-MX/examples/qa-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-MX",
+      "role": "software-engineer",
+      "path": "examples/es-MX/software-engineer.json",
+      "url": "/l/es-MX/examples/software-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "es-MX",
+      "role": "ux-designer",
+      "path": "examples/es-MX/ux-designer.json",
+      "url": "/l/es-MX/examples/ux-designer"
+    },
+    {
+      "kind": "examples",
+      "locale": "fr-CA",
+      "role": "data-analyst",
+      "path": "examples/fr-CA/data-analyst.json",
+      "url": "/l/fr-CA/examples/data-analyst"
+    },
+    {
+      "kind": "examples",
+      "locale": "fr-CA",
+      "role": "data-scientist",
+      "path": "examples/fr-CA/data-scientist.json",
+      "url": "/l/fr-CA/examples/data-scientist"
+    },
+    {
+      "kind": "examples",
+      "locale": "fr-CA",
+      "role": "devops-engineer",
+      "path": "examples/fr-CA/devops-engineer.json",
+      "url": "/l/fr-CA/examples/devops-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "fr-CA",
+      "role": "marketing-manager",
+      "path": "examples/fr-CA/marketing-manager.json",
+      "url": "/l/fr-CA/examples/marketing-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "fr-CA",
+      "role": "product-manager",
+      "path": "examples/fr-CA/product-manager.json",
+      "url": "/l/fr-CA/examples/product-manager"
+    },
+    {
+      "kind": "examples",
+      "locale": "fr-CA",
+      "role": "qa-engineer",
+      "path": "examples/fr-CA/qa-engineer.json",
+      "url": "/l/fr-CA/examples/qa-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "fr-CA",
+      "role": "software-engineer",
+      "path": "examples/fr-CA/software-engineer.json",
+      "url": "/l/fr-CA/examples/software-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "fr-CA",
+      "role": "ux-designer",
+      "path": "examples/fr-CA/ux-designer.json",
+      "url": "/l/fr-CA/examples/ux-designer"
+    },
+    {
+      "kind": "examples",
+      "locale": "pt-BR",
+      "role": "data-analyst",
+      "path": "examples/pt-BR/data-analyst.json",
+      "url": "/l/pt-BR/examples/data-analyst"
+    },
+    {
+      "kind": "examples",
+      "locale": "pt-BR",
+      "role": "qa-engineer",
+      "path": "examples/pt-BR/qa-engineer.json",
+      "url": "/l/pt-BR/examples/qa-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "pt-BR",
+      "role": "software-engineer",
+      "path": "examples/pt-BR/software-engineer.json",
+      "url": "/l/pt-BR/examples/software-engineer"
+    },
+    {
+      "kind": "examples",
+      "locale": "pt-BR",
+      "role": "ux-designer",
+      "path": "examples/pt-BR/ux-designer.json",
+      "url": "/l/pt-BR/examples/ux-designer"
+    },
+    {
+      "kind": "templates",
+      "locale": "en",
+      "role": "backend-developer",
+      "path": "templates/en/backend-developer.json",
+      "url": "/l/en/templates/backend-developer"
+    },
+    {
+      "kind": "templates",
+      "locale": "en",
+      "role": "business-analyst",
+      "path": "templates/en/business-analyst.json",
+      "url": "/l/en/templates/business-analyst"
+    },
+    {
+      "kind": "templates",
+      "locale": "en",
+      "role": "data-scientist",
+      "path": "templates/en/data-scientist.json",
+      "url": "/l/en/templates/data-scientist"
+    },
+    {
+      "kind": "templates",
+      "locale": "en",
+      "role": "devops-engineer",
+      "path": "templates/en/devops-engineer.json",
+      "url": "/l/en/templates/devops-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "en",
+      "role": "marketing-manager",
+      "path": "templates/en/marketing-manager.json",
+      "url": "/l/en/templates/marketing-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "en",
+      "role": "product-manager",
+      "path": "templates/en/product-manager.json",
+      "url": "/l/en/templates/product-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "en",
+      "role": "project-manager",
+      "path": "templates/en/project-manager.json",
+      "url": "/l/en/templates/project-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "en",
+      "role": "ui-designer",
+      "path": "templates/en/ui-designer.json",
+      "url": "/l/en/templates/ui-designer"
+    },
+    {
+      "kind": "templates",
+      "locale": "en-CA",
+      "role": "data-analyst",
+      "path": "templates/en-CA/data-analyst.json",
+      "url": "/l/en-CA/templates/data-analyst"
+    },
+    {
+      "kind": "templates",
+      "locale": "en-CA",
+      "role": "qa-engineer",
+      "path": "templates/en-CA/qa-engineer.json",
+      "url": "/l/en-CA/templates/qa-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "en-CA",
+      "role": "software-engineer",
+      "path": "templates/en-CA/software-engineer.json",
+      "url": "/l/en-CA/templates/software-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "en-CA",
+      "role": "ux-designer",
+      "path": "templates/en-CA/ux-designer.json",
+      "url": "/l/en-CA/templates/ux-designer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "backend-developer",
+      "path": "templates/es-AR/backend-developer.json",
+      "url": "/l/es-AR/templates/backend-developer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "data-analyst",
+      "path": "templates/es-AR/data-analyst.json",
+      "url": "/l/es-AR/templates/data-analyst"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "data-scientist",
+      "path": "templates/es-AR/data-scientist.json",
+      "url": "/l/es-AR/templates/data-scientist"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "devops-engineer",
+      "path": "templates/es-AR/devops-engineer.json",
+      "url": "/l/es-AR/templates/devops-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "marketing-manager",
+      "path": "templates/es-AR/marketing-manager.json",
+      "url": "/l/es-AR/templates/marketing-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "product-manager",
+      "path": "templates/es-AR/product-manager.json",
+      "url": "/l/es-AR/templates/product-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "qa-engineer",
+      "path": "templates/es-AR/qa-engineer.json",
+      "url": "/l/es-AR/templates/qa-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "software-engineer",
+      "path": "templates/es-AR/software-engineer.json",
+      "url": "/l/es-AR/templates/software-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "ui-designer",
+      "path": "templates/es-AR/ui-designer.json",
+      "url": "/l/es-AR/templates/ui-designer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-AR",
+      "role": "ux-designer",
+      "path": "templates/es-AR/ux-designer.json",
+      "url": "/l/es-AR/templates/ux-designer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "backend-developer",
+      "path": "templates/es-CL/backend-developer.json",
+      "url": "/l/es-CL/templates/backend-developer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "data-analyst",
+      "path": "templates/es-CL/data-analyst.json",
+      "url": "/l/es-CL/templates/data-analyst"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "data-scientist",
+      "path": "templates/es-CL/data-scientist.json",
+      "url": "/l/es-CL/templates/data-scientist"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "devops-engineer",
+      "path": "templates/es-CL/devops-engineer.json",
+      "url": "/l/es-CL/templates/devops-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "marketing-manager",
+      "path": "templates/es-CL/marketing-manager.json",
+      "url": "/l/es-CL/templates/marketing-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "product-manager",
+      "path": "templates/es-CL/product-manager.json",
+      "url": "/l/es-CL/templates/product-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "qa-engineer",
+      "path": "templates/es-CL/qa-engineer.json",
+      "url": "/l/es-CL/templates/qa-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "software-engineer",
+      "path": "templates/es-CL/software-engineer.json",
+      "url": "/l/es-CL/templates/software-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "ui-designer",
+      "path": "templates/es-CL/ui-designer.json",
+      "url": "/l/es-CL/templates/ui-designer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-CL",
+      "role": "ux-designer",
+      "path": "templates/es-CL/ux-designer.json",
+      "url": "/l/es-CL/templates/ux-designer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-MX",
+      "role": "data-analyst",
+      "path": "templates/es-MX/data-analyst.json",
+      "url": "/l/es-MX/templates/data-analyst"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-MX",
+      "role": "data-scientist",
+      "path": "templates/es-MX/data-scientist.json",
+      "url": "/l/es-MX/templates/data-scientist"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-MX",
+      "role": "devops-engineer",
+      "path": "templates/es-MX/devops-engineer.json",
+      "url": "/l/es-MX/templates/devops-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-MX",
+      "role": "marketing-manager",
+      "path": "templates/es-MX/marketing-manager.json",
+      "url": "/l/es-MX/templates/marketing-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-MX",
+      "role": "product-manager",
+      "path": "templates/es-MX/product-manager.json",
+      "url": "/l/es-MX/templates/product-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-MX",
+      "role": "qa-engineer",
+      "path": "templates/es-MX/qa-engineer.json",
+      "url": "/l/es-MX/templates/qa-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-MX",
+      "role": "software-engineer",
+      "path": "templates/es-MX/software-engineer.json",
+      "url": "/l/es-MX/templates/software-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "es-MX",
+      "role": "ux-designer",
+      "path": "templates/es-MX/ux-designer.json",
+      "url": "/l/es-MX/templates/ux-designer"
+    },
+    {
+      "kind": "templates",
+      "locale": "fr-CA",
+      "role": "data-analyst",
+      "path": "templates/fr-CA/data-analyst.json",
+      "url": "/l/fr-CA/templates/data-analyst"
+    },
+    {
+      "kind": "templates",
+      "locale": "fr-CA",
+      "role": "data-scientist",
+      "path": "templates/fr-CA/data-scientist.json",
+      "url": "/l/fr-CA/templates/data-scientist"
+    },
+    {
+      "kind": "templates",
+      "locale": "fr-CA",
+      "role": "devops-engineer",
+      "path": "templates/fr-CA/devops-engineer.json",
+      "url": "/l/fr-CA/templates/devops-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "fr-CA",
+      "role": "marketing-manager",
+      "path": "templates/fr-CA/marketing-manager.json",
+      "url": "/l/fr-CA/templates/marketing-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "fr-CA",
+      "role": "product-manager",
+      "path": "templates/fr-CA/product-manager.json",
+      "url": "/l/fr-CA/templates/product-manager"
+    },
+    {
+      "kind": "templates",
+      "locale": "fr-CA",
+      "role": "qa-engineer",
+      "path": "templates/fr-CA/qa-engineer.json",
+      "url": "/l/fr-CA/templates/qa-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "fr-CA",
+      "role": "software-engineer",
+      "path": "templates/fr-CA/software-engineer.json",
+      "url": "/l/fr-CA/templates/software-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "fr-CA",
+      "role": "ux-designer",
+      "path": "templates/fr-CA/ux-designer.json",
+      "url": "/l/fr-CA/templates/ux-designer"
+    },
+    {
+      "kind": "templates",
+      "locale": "pt-BR",
+      "role": "data-analyst",
+      "path": "templates/pt-BR/data-analyst.json",
+      "url": "/l/pt-BR/templates/data-analyst"
+    },
+    {
+      "kind": "templates",
+      "locale": "pt-BR",
+      "role": "qa-engineer",
+      "path": "templates/pt-BR/qa-engineer.json",
+      "url": "/l/pt-BR/templates/qa-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "pt-BR",
+      "role": "software-engineer",
+      "path": "templates/pt-BR/software-engineer.json",
+      "url": "/l/pt-BR/templates/software-engineer"
+    },
+    {
+      "kind": "templates",
+      "locale": "pt-BR",
+      "role": "ux-designer",
+      "path": "templates/pt-BR/ux-designer.json",
+      "url": "/l/pt-BR/templates/ux-designer"
+    }
+  ]
+}

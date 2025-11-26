@@ -1,0 +1,6 @@
+.exp{ border:1px solid #e5e7eb; border-radius:12px; padding:12px; background:#fff; display:flex; flex-direction:column; gap:10px; }
+.row.two{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+label{ display:flex; flex-direction:column; gap:6px; font-size:12px; color:#374151; }
+input, select, textarea{ border:1px solid #d1d5db; border-radius:10px; padding:8px; }
+textarea{ min-height:100px; }
+.present{ display:flex; align-items:center; gap:6px; margin-top:6px; }

@@ -1,0 +1,1 @@
+import { Profile } from '../models/profile'; export class ReplaceProfile { static readonly type='[Profile] Replace'; constructor(public value:Profile){} } export class PatchProfile { static readonly type='[Profile] Patch'; constructor(public changes:Partial<Profile>){} }

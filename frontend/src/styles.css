@@ -1,0 +1,95 @@
+/* Quill Editor Styles - must be imported before Tailwind */
+@import 'quill/dist/quill.snow.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Quill Editor Style Overrides */
+/* Remove excessive paragraph spacing */
+.ql-editor p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Add spacing only between consecutive paragraphs */
+.ql-editor p + p {
+  margin-top: 0.5rem !important;
+}
+
+/* List styling */
+.ql-editor ul,
+.ql-editor ol {
+  margin: 0.25rem 0 !important;
+  padding-left: 1.5rem !important;
+}
+
+.ql-editor li {
+  margin: 0 !important;
+  padding: 0.125rem 0 !important;
+}
+
+/* Link styling */
+.ql-editor a {
+  color: #2563eb !important;
+  text-decoration: underline !important;
+}
+
+/* Quill alignment classes */
+.ql-align-left {
+  text-align: left !important;
+}
+
+.ql-align-center {
+  text-align: center !important;
+}
+
+.ql-align-right {
+  text-align: right !important;
+}
+
+.ql-align-justify {
+  text-align: justify !important;
+}
+
+/* Global reset for full-screen layout */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Resume canvas styles */
+.resume-canvas {
+  font-family: var(--font-family, ui-sans-serif);
+  font-size: var(--font-size, 14px);
+  line-height: var(--line-height, 1.4);
+}
+
+/* Font family tokens */
+.token-serif {
+  --font-family: Georgia, serif;
+}
+
+.token-sans {
+  --font-family: Inter, ui-sans-serif;
+}
+
+.token-mono {
+  --font-family: Menlo, monospace;
+}
+
+/* Color palette tokens */
+.palette-blue {
+  --color-accent: #0ea5e9;
+}
+
+.palette-green {
+  --color-accent: #22c55e;
+}
+
+.palette-rose {
+  --color-accent: #e11d48;
+}

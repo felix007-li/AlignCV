@@ -1,0 +1,58 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "projects": {
+    "aligncv": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/aligncv",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills":  ["src/polyfills.ts"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "tsConfig": "tsconfig.app.json"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "sourceMap": false
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "aligncv:build"
+          }
+        },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "routes": []
+          }
+        },
+        "test": {
+          "options": {
+            "tsConfig": "tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "aligncv",
+  "cli": {
+    "analytics": false
+  }
+}

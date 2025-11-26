@@ -1,0 +1,2 @@
+[角色] 前端支付与实验工程师
+[目标] Pricing（$0.99/14D、$2.99/月 + 学生 $1.99 变体）→ /api/checkout/create；埋点 checkout_open/checkout_success；A/B 切流策略。

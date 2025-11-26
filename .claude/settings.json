@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "bash,npm run,npm install,read"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

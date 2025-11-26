@@ -1,0 +1,8 @@
+.editor-shell{ display:grid; grid-template-columns: 560px 1fr; gap:12px; }
+.left{ display:flex; flex-direction:column; gap:12px; }
+.top-actions{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.long{ border:1px solid #d1d5db; background:#fff; border-radius:12px; height:56px; display:flex; align-items:center; justify-content:center; gap:10px; font-weight:600; }
+.right{ display:flex; flex-direction:column; gap:10px; }
+.mt-2{ margin-top:8px; }
+.actions{ display:flex; justify-content:flex-end; }
+.export{ border:1px solid #2563eb; background:#2563eb; color:#fff; border-radius:10px; padding:8px 12px; }

@@ -1,0 +1,22 @@
+<h1>Cover Letter</h1>
+
+<section class="hero">
+  <div class="copy">
+    <h2>Create new cover letter</h2>
+    <p>Start from your resume or a template.</p>
+  </div>
+  <button class="btn-primary">New Cover Letter</button>
+</section>
+
+<h3>Your cover letters</h3>
+<ul class="list">
+  <li *ngFor="let c of items">
+    <div class="row">
+      <div class="left">
+        <h4>{{ c.title }}</h4>
+        <p class="muted">Updated {{ c.updated }}</p>
+      </div>
+      <button class="btn-outline">Open →</button>
+    </div>
+  </li>
+</ul>

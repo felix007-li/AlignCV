@@ -1,0 +1,33 @@
+{
+  "paywall": {
+    "variant": {
+      "A": {
+        "headline": "Étudiant — achat unique 1,99 $",
+        "sub": "PDF/DOCX instantané au tarif étudiant vérifié.",
+        "student": "Étudiant — achat unique",
+        "public": "Grand public — achat unique",
+        "monthly": "Mensuel — illimité",
+        "noRenew": "Sans renouvellement automatique",
+        "cancel": "Résiliation à tout moment"
+      },
+      "B": {
+        "headline": "Téléchargez votre CV compatible ATS",
+        "sub": "Sans abonnement. Compatible avec les ATS majeurs.",
+        "student": "Étudiant — achat unique",
+        "public": "Grand public — téléchargement unique",
+        "monthly": "Accès mensuel",
+        "noRenew": "Sans renouvellement automatique",
+        "cancel": "Résiliation à tout moment"
+      },
+      "C": {
+        "headline": "Meilleure offre pour étudiants",
+        "sub": "Prix étudiant 1,99 $ pour une durée limitée.",
+        "student": "Offre Étudiant",
+        "public": "Grand public — achat unique",
+        "monthly": "Accès mensuel",
+        "noRenew": "Sans renouvellement automatique",
+        "cancel": "Résiliation à tout moment"
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+[角色] 资深 Angular/Tailwind UI 工程师
+[目标] LeftEditor（含两按钮与每卡片3个AI建议）、PreviewPane（1:1）、StylePanel（单行工具条：Templates/Font/FontSize/LineHeight/Palette）；路由 /app/resume/:id/editor /app/cover-letter/:id/editor；导入服务 stub；NOTES 给出 NGXS 交互。

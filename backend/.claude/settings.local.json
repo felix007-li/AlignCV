@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(npm install)",
+      "Bash(npm run prisma:generate:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(openssl rand:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(docker exec:*)",
+      "Bash(docker inspect:*)",
+      "Bash(npm run prisma:migrate:*)",
+      "Bash(nc:*)",
+      "Bash(npx prisma db push:*)",
+      "Bash(psql:*)",
+      "Bash(npx prisma validate:*)",
+      "Bash(npx prisma migrate dev:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(lsof:*)",
+      "Bash(__NEW_LINE__ curl -s -X POST http://localhost:3000/api/auth/register )",
+      "Bash(__NEW_LINE__ echo \"✅ 创建了 2 个测试用户\")",
+      "Bash(/tmp/pg_view.sh)",
+      "Bash(./db-queries.sh:*)",
+      "Bash(docker run:*)",
+      "Bash(dpage/pgadmin4:latest)",
+      "Bash(__NEW_LINE__ echo \"\")",
+      "Bash(make mdx-json:*)",
+      "Bash(make cc-i18n:*)",
+      "Bash(make prerender-routes:*)",
+      "Bash(node scripts/flatten-content-structure.js:*)",
+      "Bash(node scripts/generate-manifest.js:*)",
+      "Bash(npm run start:*)",
+      "Bash(test:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

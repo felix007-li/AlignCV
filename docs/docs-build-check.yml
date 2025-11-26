@@ -1,0 +1,21 @@
+name: docs-build-check
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'docusaurus/**'
+      - '.github/workflows/docs-build-check.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '18' }
+      - name: Install deps
+        working-directory: docusaurus
+        run: npm ci || npm i
+      - name: Build
+        working-directory: docusaurus
+        run: npm run build
