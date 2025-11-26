@@ -1,0 +1,25 @@
+<div class="exp">
+  <div class="row two">
+    <label><span>Position</span><input [value]="model.title" (input)="modelChange.emit({...model, title: ($event.target as HTMLInputElement).value})"/></label>
+    <label><span>City</span><input [value]="model.city" (input)="modelChange.emit({...model, city: ($event.target as HTMLInputElement).value})"/></label>
+  </div>
+  <div class="row two">
+    <label><span>Employer</span><input [value]="model.employer" (input)="modelChange.emit({...model, employer: ($event.target as HTMLInputElement).value})"/></label>
+    <label class="dates">
+      <span>Start</span>
+      <select [value]="model.startMonth" (change)="modelChange.emit({...model, startMonth: ($event.target as HTMLSelectElement).value})"><option>Jan</option><option>Feb</option><option>Mar</option><option>Apr</option><option>May</option><option>Jun</option><option>Jul</option><option>Aug</option><option>Sep</option><option>Oct</option><option>Nov</option><option>Dec</option></select>
+      <input [value]="model.startYear" (input)="modelChange.emit({...model, startYear: ($event.target as HTMLInputElement).value})" placeholder="2024"/>
+    </label>
+  </div>
+  <div class="row two">
+    <label class="dates">
+      <span>End</span>
+      <select [value]="model.endMonth" (change)="modelChange.emit({...model, endMonth: ($event.target as HTMLSelectElement).value})"><option>Month</option><option>Jan</option><option>Feb</option><option>Mar</option><option>Apr</option><option>May</option><option>Jun</option><option>Jul</option><option>Aug</option><option>Sep</option><option>Oct</option><option>Nov</option><option>Dec</option></select>
+      <input [value]="model.endYear" (input)="modelChange.emit({...model, endYear: ($event.target as HTMLInputElement).value})" placeholder="Year"/>
+      <label class="present"><input type="checkbox" [checked]="model.present" (change)="modelChange.emit({...model, present: ($event.target as HTMLInputElement).checked})"/> Present</label>
+    </label>
+  </div>
+  <label><span>Description</span>
+    <textarea [value]="model.description" (input)="modelChange.emit({...model, description: ($event.target as HTMLTextAreaElement).value})"></textarea>
+  </label>
+</div>

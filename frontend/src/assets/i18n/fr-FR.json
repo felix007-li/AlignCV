@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "resume": "CV",
+    "cover": "Lettre de motivation",
+    "pricing": "Tarifs",
+    "faq": "FAQ",
+    "dashboard": "Tableau de bord"
+  },
+  "home": {
+    "hero": "Créez des CV et lettres prêts à l'emploi",
+    "cta": "Commencer gratuitement →",
+    "how": "Comment ça marche"
+  },
+  "app": {
+    "dashboard": "Tableau de bord",
+    "resume": "CV",
+    "cover": "Lettre de motivation",
+    "newResume": "Nouveau CV",
+    "newCover": "Nouvelle lettre de motivation"
+  },
+  "seo": {
+    "loading": "Chargement du contenu...",
+    "notFound": "Contenu introuvable",
+    "goHome": "Retour à l'accueil",
+    "createWithTemplate": "Créer un CV avec ce modèle"
+  }
+}

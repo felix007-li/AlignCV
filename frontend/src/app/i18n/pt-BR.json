@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "home": "Início",
+    "resume": "Currículo",
+    "cover": "Carta de apresentação",
+    "pricing": "Preços",
+    "faq": "FAQ",
+    "dashboard": "Painel"
+  },
+  "home": {
+    "hero": "Crie currículos e cartas prontos para vaga",
+    "cta": "Comece grátis →",
+    "how": "Como funciona"
+  }
+}

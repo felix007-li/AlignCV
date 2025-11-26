@@ -1,0 +1,1 @@
+# Pricing\n- $0.99 — 14‑day pass (one‑time)\n- $2.99/mo — Monthly subscription\n- Multi‑currency: USD/CAD via .env price IDs\n

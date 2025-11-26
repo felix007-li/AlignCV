@@ -1,0 +1,35 @@
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" routerLink="/">AlignCV</a>
+
+    <nav class="nav__menu" (mouseleave)="close()">
+      <div *ngFor="let item of nav" class="menu-item" [class.has-children]="item.children">
+        <a
+          *ngIf="!item.children"
+          class="menu-link"
+          [routerLink]="item.path"
+          routerLinkActive="active">{{ item.label }}</a>
+
+        <button
+          *ngIf="item.children"
+          class="menu-link with-caret"
+          (mouseenter)="toggle(item.label)"
+          (focus)="toggle(item.label)"
+          (click)="toggle(item.label)"
+          [attr.aria-haspopup]="'menu'"
+          [attr.aria-expanded]="open() === item.label">
+          {{ item.label }}
+          <span class="caret">▾</span>
+        </button>
+
+        <ul class="dropdown" *ngIf="open() === item.label" role="menu">
+          <li *ngFor="let c of item.children" role="menuitem">
+            <a [routerLink]="c.path" (click)="close()">{{ c.label }}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <a class="btn-dashboard" routerLink="/dashboard">Dashboard →</a>
+  </div>
+</header>

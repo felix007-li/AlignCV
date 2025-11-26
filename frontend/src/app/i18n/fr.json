@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "resume": "CV",
+    "cover": "Lettre de motivation",
+    "pricing": "Tarifs",
+    "faq": "FAQ",
+    "dashboard": "Tableau de bord"
+  },
+  "home": {
+    "hero": "Créez des CV et lettres prêts à l’emploi",
+    "cta": "Commencer gratuitement →",
+    "how": "Comment ça marche"
+  }
+}

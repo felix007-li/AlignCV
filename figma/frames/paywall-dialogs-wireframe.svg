@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+  <title>Paywall</title>
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <rect x="120" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="222.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="324.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="426.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="528.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="630.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="732.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="834.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="936.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="1038.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="1140.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+<rect x="1242.0" y="0" width="78.0" height="1024" fill="#F3F4F6"/>
+  <rect x="0" y="0" width="1440" height="72" rx="8" fill="#FFFFFF" stroke="#E5E7EB" />
+<text x="40" y="44" font-family="Inter, Arial" font-size="20" font-weight="bold" fill="#111827">AlignCV — Paywall Variants</text>
+<rect x="120" y="140" width="360" height="420" rx="8" fill="#FFFFFF" stroke="#D1D5DB" />
+<text x="140" y="180" font-family="Inter, Arial" font-size="18" font-weight="bold" fill="#111827">Variant A</text>
+<rect x="540" y="120" width="360" height="460" rx="8" fill="#DBEAFE" stroke="#93C5FD" />
+<text x="560" y="160" font-family="Inter, Arial" font-size="18" font-weight="bold" fill="#111827">Variant B (control)</text>
+<rect x="960" y="140" width="360" height="420" rx="8" fill="#FFFFFF" stroke="#D1D5DB" />
+<text x="980" y="180" font-family="Inter, Arial" font-size="18" font-weight="bold" fill="#111827">Variant C</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="620" viewBox="0 0 1440 620">
+  <title>Home — How it works</title>
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="1440" height="72" rx="0" fill="#FFFFFF" stroke="#E5E7EB" />
+<text x="40" y="44" font-family="Inter, Arial" font-size="20" font-weight="bold" fill="#111827">AlignCV</text>
+<text x="320" y="44" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">Home</text>
+<text x="400" y="44" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">Resume ▾</text>
+<text x="520" y="44" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">Cover Letter ▾</text>
+<text x="700" y="44" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">Pricing</text>
+<text x="790" y="44" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">FAQ</text>
+<rect x="1160" y="18" width="200" height="40" rx="10" fill="#2563EB" stroke="#06B6D4" /><text x="1178" y="46" font-family="Inter, Arial" font-size="14" font-weight="bold" fill="#FFFFFF">Dashboard →</text>
+<rect x="120" y="100" width="1200" height="240" rx="16" fill="#DBEAFE" stroke="#93C5FD" />
+<text x="160" y="160" font-family="Inter, Arial" font-size="32" font-weight="bold" fill="#111827">Build job‑ready resumes & cover letters</text>
+<text x="160" y="196" font-family="Inter, Arial" font-size="18" font-weight="normal" fill="#374151">Import LinkedIn • Inline AI suggestions • ATS‑friendly export</text>
+<rect x="160" y="226" width="200" height="44" rx="10" fill="#2563EB" stroke="#06B6D4" /><text x="178" y="258" font-family="Inter, Arial" font-size="14" font-weight="bold" fill="#FFFFFF">Start for free →</text>
+<text x="120" y="380" font-family="Inter, Arial" font-size="22" font-weight="bold" fill="#111827">How it works</text>
+<rect x="120" y="410" width="270" height="160" rx="12" fill="#FFFFFF" stroke="#D1D5DB" />
+<text x="136" y="440" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">1. Import</text>
+<text x="136" y="470" font-family="Inter, Arial" font-size="12" font-weight="normal" fill="#374151">One‑click import from LinkedIn or upload your resume.</text>
+<rect x="420" y="410" width="270" height="160" rx="12" fill="#FFFFFF" stroke="#D1D5DB" />
+<text x="436" y="440" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">2. Edit</text>
+<text x="436" y="470" font-family="Inter, Arial" font-size="12" font-weight="normal" fill="#374151">Edit sections; get inline AI suggestions in context.</text>
+<rect x="720" y="410" width="270" height="160" rx="12" fill="#FFFFFF" stroke="#D1D5DB" />
+<text x="736" y="440" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">3. Align</text>
+<text x="736" y="470" font-family="Inter, Arial" font-size="12" font-weight="normal" fill="#374151">Match JD keywords; tune fonts, sizes, palette.</text>
+<rect x="1020" y="410" width="270" height="160" rx="12" fill="#FFFFFF" stroke="#D1D5DB" />
+<text x="1036" y="440" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">4. Export</text>
+<text x="1036" y="470" font-family="Inter, Arial" font-size="12" font-weight="normal" fill="#374151">Export ATS‑friendly PDF or share.</text>
+</svg>

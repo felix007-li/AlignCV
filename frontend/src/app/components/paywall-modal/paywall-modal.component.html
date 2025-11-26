@@ -1,0 +1,19 @@
+<div class="overlay" (click)="close.emit()">
+  <div class="dialog" (click)="$event.stopPropagation()">
+    <h3>Unlock export</h3>
+    <p>Choose a plan to export your resume without watermark.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="price">$0.99</div>
+        <div class="label">14‑day pass</div>
+        <button (click)="buyPass()">Get pass</button>
+      </div>
+      <div class="plan">
+        <div class="price">$2.99</div>
+        <div class="label">Monthly</div>
+        <button (click)="subscribe()">Subscribe</button>
+      </div>
+    </div>
+    <button class="link" (click)="close.emit()">Maybe later</button>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+# Stripe Webhooks\nListen `checkout.session.completed`; mode=payment => create 14d license; mode=subscription => attach subscription.\n

@@ -1,0 +1,1 @@
+import { Component } from '@angular/core'; @Component({ standalone:true, selector:'faq-page', template:`<h2 class='text-2xl font-bold mb-4'>FAQ</h2><p>Common questions about AlignCV.</p>` }) export class FaqPage {}

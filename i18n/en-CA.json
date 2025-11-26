@@ -1,0 +1,33 @@
+{
+  "paywall": {
+    "variant": {
+      "A": {
+        "headline": "One‑time Student — $1.99",
+        "sub": "Instant PDF/DOCX at a verified student price.",
+        "student": "Student — One‑time",
+        "public": "Public — One‑time",
+        "monthly": "Monthly — Unlimited",
+        "noRenew": "No auto‑renewal",
+        "cancel": "Cancel anytime"
+      },
+      "B": {
+        "headline": "Download your ATS‑ready résumé",
+        "sub": "No subscription. Works with major ATS.",
+        "student": "Student — One‑time",
+        "public": "Public — Single download",
+        "monthly": "Monthly Access",
+        "noRenew": "No auto‑renewal",
+        "cancel": "Cancel anytime"
+      },
+      "C": {
+        "headline": "Best value for students",
+        "sub": "Limited‑time $1.99 student price.",
+        "student": "Student Special",
+        "public": "Public — One‑time",
+        "monthly": "Monthly Access",
+        "noRenew": "No auto‑renewal",
+        "cancel": "Cancel anytime"
+      }
+    }
+  }
+}

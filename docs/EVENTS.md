@@ -1,0 +1,1 @@
+# Events\n- template_select\n- apply_suggestion\n- import_resume (file/linkedin)\n- checkout_start / checkout_complete\n- export_pdf\n

@@ -1,0 +1,27 @@
+name: deploy-docs-vercel
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'docs/**'
+      - 'docusaurus/**'
+      - '.github/workflows/deploy-docs-vercel.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '18' }
+      - name: Install deps
+        working-directory: docusaurus
+        run: npm ci || npm i
+      - name: Build docs
+        working-directory: docusaurus
+        run: npm run build
+      - name: Deploy to Vercel
+        run: |
+          npm i -g vercel
+          vercel deploy docusaurus/build --prod --token ${{ secrets.VERCEL_TOKEN }} --yes --scope ${{ secrets.VERCEL_ORG_ID }} --project ${{ secrets.VERCEL_PROJECT_ID }}

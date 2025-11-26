@@ -1,0 +1,41 @@
+<div class="editor-shell">
+  <aside class="left">
+    <div class="top-actions">
+      <button class="long" (click)="clickUpload()"><span class="ico">⬆</span> Upload existing resume</button>
+      <button class="long" (click)="clickLinkedIn()"><span class="ico">in</span> Import LinkedIn profile</button>
+    </div>
+
+    <aligncv-personal-details-form
+      [model]="(personal$ | async)!"
+      (modelChange)="updatePersonal($event)">
+    </aligncv-personal-details-form>
+
+    <ng-container *ngIf="sections$ | async as sections">
+      <aligncv-section-editor
+        *ngFor="let s of sections"
+        [title]="s.title"
+        [content]="s.content"
+        [suggestions]="[]"
+        (contentChange)="updateContent(s.id, $event)"
+        (applySuggestion)="applySuggestion(s.id, $event)">
+      </aligncv-section-editor>
+    </ng-container>
+  </aside>
+
+  <section class="right">
+    <aligncv-preview-renderer
+      [templateId]="(style$ | async)?.templateId || 'classic'"
+      [sections]="toPreview((sections$ | async) || [])">
+    </aligncv-preview-renderer>
+
+    <aligncv-style-toolbar class="mt-2"
+      [model]="(style$ | async)!"
+      (selectTemplate)="onSelectTemplate($event)"
+      (change)="onStyleChange($event)">
+    </aligncv-style-toolbar>
+
+    <div class="actions"><button class="export" (click)="exportPdf()">Export PDF</button></div>
+  </section>
+
+  <aligncv-paywall-modal *ngIf="showPaywall" (close)="closePaywall()"></aligncv-paywall-modal>
+</div>

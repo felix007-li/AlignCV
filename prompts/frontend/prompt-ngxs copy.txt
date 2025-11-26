@@ -1,0 +1,5 @@
+[角色] 你是资深 Angular 17 + NGXS 工程师。
+[目标]
+- 生成 5 个 slices：auth / resume / jd / checkout / ui（model/actions/selectors/state）
+- 附最小单测（Jest）
+[输出] 见 FILES 清单；NOTES 说明注册与用法。

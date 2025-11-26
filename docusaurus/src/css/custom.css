@@ -1,0 +1,3 @@
+/* docusaurus/src/css/custom.css */
+:root { --ifm-color-primary: #0ea5e9; }
+.navbar__title { font-weight: 700; }

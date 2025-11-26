@@ -1,0 +1,1907 @@
+import { Component, OnInit, AfterViewInit, inject, signal, ViewChild, ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import Quill from 'quill';
+import {
+  ResumeNewState,
+  PersonalDetails,
+  ProfileSummary,
+  ExperienceEntry,
+  EducationEntry,
+  SkillEntry,
+  LanguageEntry,
+  CourseEntry,
+  CertificateEntry,
+  UpdatePersonalDetails,
+  UpdateProfile,
+  AddExperience,
+  UpdateExperience,
+  DeleteExperience,
+  ToggleExperienceExpanded,
+  AddEducation,
+  UpdateEducation,
+  DeleteEducation,
+  ToggleEducationExpanded,
+  AddSkill,
+  UpdateSkill,
+  DeleteSkill,
+  AddLanguage,
+  UpdateLanguage,
+  DeleteLanguage,
+  AddCourse,
+  UpdateCourse,
+  DeleteCourse,
+  AddCertificate,
+  UpdateCertificate,
+  DeleteCertificate,
+  ToggleSectionCollapsed
+} from '../../state/resume-new.state';
+import { ResumeImportService } from '../../services/resume-import.service';
+
+@Component({
+  standalone: true,
+  selector: 'app-left-editor',
+  imports: [CommonModule, FormsModule],
+  template: `
+    <div class="space-y-4">
+      <!-- Upload & Import Buttons -->
+      <div class="flex gap-2 mb-4">
+        <label class="flex-1">
+          <input
+            type="file"
+            class="hidden"
+            accept=".pdf,.docx,.txt"
+            (change)="onUpload($event)"
+          />
+          <span
+            class="block border-2 border-dashed border-gray-300 rounded-lg px-4 py-3 text-center cursor-pointer bg-white hover:bg-gray-50 hover:border-blue-400 transition-colors"
+          >
+            <svg class="w-6 h-6 mx-auto mb-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+            <span class="text-sm font-medium text-gray-700">Upload existing resume</span>
+            <span class="text-xs text-gray-500 block mt-1">PDF, DOCX or TXT</span>
+          </span>
+        </label>
+        <button
+          (click)="importLinkedin()"
+          class="flex-1 border-2 border-dashed border-gray-300 rounded-lg px-4 py-3 bg-white hover:bg-gray-50 hover:border-blue-400 transition-colors"
+        >
+          <svg class="w-6 h-6 mx-auto mb-1 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+          <span class="text-sm font-medium text-gray-700">Import from LinkedIn</span>
+          <span class="text-xs text-gray-500 block mt-1">Upload exported PDF</span>
+        </button>
+      </div>
+
+      <!-- Personal Details Section (Always Expanded) -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-gray-400">::</span>
+          <h3 class="text-lg font-semibold">Personal Details</h3>
+        </div>
+
+        <div class="space-y-3">
+          <div class="grid grid-cols-3 gap-3">
+            <!-- Photo Upload -->
+            <div class="col-span-1">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Photo</label>
+              <div class="border-2 border-dashed border-gray-300 rounded-lg aspect-square flex items-center justify-center bg-gray-50 hover:bg-gray-100 cursor-pointer">
+                <input type="file" class="hidden" accept="image/*" />
+                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Given Name and Family Name -->
+            <div class="col-span-2 space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Given name</label>
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                    [(ngModel)]="personalDetails.givenName"
+                    (ngModelChange)="updatePersonalDetails()"
+                    placeholder=""
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Family name</label>
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                    [(ngModel)]="personalDetails.familyName"
+                    (ngModelChange)="updatePersonalDetails()"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+
+              <!-- Desired Job Position -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1 flex items-center justify-between">
+                  <span>Desired job position</span>
+                  <label class="inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      class="hidden"
+                      [(ngModel)]="personalDetails.useAsHeadline"
+                      (ngModelChange)="updatePersonalDetails()"
+                    />
+                    <div class="relative">
+                      <div class="w-10 h-5 bg-gray-300 rounded-full transition-colors" [class.bg-blue-600]="personalDetails.useAsHeadline"></div>
+                      <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition-transform" [class.translate-x-5]="personalDetails.useAsHeadline"></div>
+                    </div>
+                    <span class="ml-2 text-xs text-gray-600">Use as headline</span>
+                  </label>
+                </label>
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                  [(ngModel)]="personalDetails.desiredJobPosition"
+                  (ngModelChange)="updatePersonalDetails()"
+                  placeholder=""
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Email and Phone -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+              <input
+                type="email"
+                class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                [(ngModel)]="personalDetails.emailAddress"
+                (ngModelChange)="updatePersonalDetails()"
+                placeholder=""
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Phone number</label>
+              <input
+                type="tel"
+                class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                [(ngModel)]="personalDetails.phoneNumber"
+                (ngModelChange)="updatePersonalDetails()"
+                placeholder=""
+              />
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+            <input
+              type="text"
+              class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+              [(ngModel)]="personalDetails.address"
+              (ngModelChange)="updatePersonalDetails()"
+              placeholder=""
+            />
+          </div>
+
+          <!-- Post code and City -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Post code</label>
+              <input
+                type="text"
+                class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                [(ngModel)]="personalDetails.postCode"
+                (ngModelChange)="updatePersonalDetails()"
+                placeholder=""
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+              <input
+                type="text"
+                class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                [(ngModel)]="personalDetails.city"
+                (ngModelChange)="updatePersonalDetails()"
+                placeholder=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile/Summary Section (Collapsible) -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div
+          class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50"
+          (click)="toggleSectionCollapse('profile')"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-gray-400">::</span>
+            <h3 class="text-lg font-semibold">Profile</h3>
+          </div>
+          <svg
+            class="w-5 h-5 transition-transform"
+            [class.rotate-180]="!profileCollapsed"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+        </div>
+
+        <div *ngIf="!profileCollapsed" class="p-4 pt-0">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Summary</label>
+          <!-- Quill Editor -->
+          <div #profileEditor class="quill-editor-wrapper"></div>
+
+          <!-- AI Suggestions Button -->
+          <div class="mt-2 flex justify-end">
+            <button
+              (click)="toggleProfileSuggestions()"
+              [disabled]="loadingAI()"
+              class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-full transition-all bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+              [class.opacity-50]="loadingAI()"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span>AI Suggestions</span>
+            </button>
+          </div>
+
+          <!-- AI Suggestions Display -->
+          <div
+            *ngIf="aiSuggestionsVisible.profile && profile.suggestions && profile.suggestions.length > 0"
+            class="mt-3 border-2 border-blue-400 rounded-xl bg-white"
+          >
+            <!-- Suggestions Header with Refresh Button -->
+            <div class="flex items-center justify-between px-4 py-2 border-b border-gray-200">
+              <span class="text-sm font-medium text-gray-700">AI Suggestions</span>
+              <button
+                (click)="getSuggestionsForProfile()"
+                [disabled]="loadingAI()"
+                class="p-1.5 rounded-full hover:bg-gray-100 transition-colors"
+                [class.opacity-50]="loadingAI()"
+                title="Refresh suggestions"
+              >
+                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Suggestions List -->
+            <div class="p-3 space-y-2">
+              <div
+                *ngFor="let suggestion of profile.suggestions.slice(0, 3)"
+                class="flex items-start gap-3 border border-gray-300 rounded-full px-4 py-3 hover:border-blue-400 hover:bg-blue-50 hover:shadow-sm transition-all cursor-pointer"
+                (click)="applyProfileSuggestion(suggestion)"
+              >
+                <span class="text-blue-600 text-xl font-light flex-shrink-0">+</span>
+                <p class="text-sm text-gray-700 leading-relaxed flex-1">{{ suggestion }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Section (Collapsible with Entries) -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div
+          class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50"
+          (click)="toggleSection('experiences')"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-gray-400">::</span>
+            <h3 class="text-lg font-semibold">Employment</h3>
+          </div>
+          <svg
+            class="w-5 h-5 transition-transform"
+            [class.rotate-180]="!sectionsCollapsed.experiences"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+        </div>
+
+        <div *ngIf="!sectionsCollapsed.experiences" class="p-4 pt-0 space-y-3">
+          <div
+            *ngFor="let exp of experiences; trackBy: trackById"
+            class="border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+            [attr.data-exp-id]="exp.id"
+          >
+            <!-- Entry Card (Collapsed) -->
+            <div
+              *ngIf="!exp.expanded"
+              class="flex items-center justify-between p-4 cursor-pointer"
+              (click)="toggleExpEntry(exp.id)"
+            >
+              <div class="flex items-center gap-3 flex-1">
+                <span class="text-gray-400">::</span>
+                <div class="flex-1 min-w-0">
+                  <div class="font-semibold text-gray-900 truncate">{{ exp.position || 'Untitled Position' }}</div>
+                  <div class="text-sm text-gray-500 truncate">{{ exp.employer && exp.employer !== 'N/A' ? exp.employer : 'Company name' }}</div>
+                </div>
+              </div>
+              <button class="p-2 hover:bg-gray-100 rounded-full" (click)="$event.stopPropagation(); toggleExpEntry(exp.id)">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Entry Form (Expanded) -->
+            <div *ngIf="exp.expanded" class="p-4 space-y-3">
+              <div class="flex justify-between items-center mb-4">
+                <h4 class="font-semibold">Experience Details</h4>
+                <button
+                  (click)="toggleExpEntry(exp.id)"
+                  class="text-sm text-gray-600 hover:text-gray-900"
+                >
+                  Collapse
+                </button>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Position</label>
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                  [(ngModel)]="exp.position"
+                  (ngModelChange)="updateExp(exp.id)"
+                  placeholder="e.g., Senior Software Engineer"
+                />
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Employer</label>
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                    [(ngModel)]="exp.employer"
+                    (ngModelChange)="updateExp(exp.id)"
+                    placeholder="Company name"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                    [(ngModel)]="exp.city"
+                    (ngModelChange)="updateExp(exp.id)"
+                    placeholder="City"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Start date</label>
+                  <div class="flex gap-2">
+                    <select
+                      class="flex-1 border border-gray-300 rounded-md px-2 py-2 text-sm"
+                      [(ngModel)]="exp.startMonth"
+                      (ngModelChange)="updateExp(exp.id)"
+                    >
+                      <option value="">Month</option>
+                      <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+                    </select>
+                    <select
+                      class="w-24 border border-gray-300 rounded-md px-2 py-2 text-sm"
+                      [(ngModel)]="exp.startYear"
+                      (ngModelChange)="updateExp(exp.id)"
+                    >
+                      <option value="">Year</option>
+                      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1 flex items-center justify-end">
+                    <label class="inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        class="hidden"
+                        [(ngModel)]="exp.isPresent"
+                        (ngModelChange)="updateExp(exp.id)"
+                      />
+                      <div class="relative">
+                        <div class="w-10 h-5 bg-gray-300 rounded-full transition-colors" [class.bg-blue-600]="exp.isPresent"></div>
+                        <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition-transform" [class.translate-x-5]="exp.isPresent"></div>
+                      </div>
+                      <span class="ml-2 text-xs text-gray-600">Present</span>
+                    </label>
+                  </label>
+                  <div class="flex gap-2">
+                    <select
+                      class="flex-1 border border-gray-300 rounded-md px-2 py-2 text-sm"
+                      [(ngModel)]="exp.endMonth"
+                      [disabled]="exp.isPresent"
+                      (ngModelChange)="updateExp(exp.id)"
+                    >
+                      <option value="">Month</option>
+                      <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+                    </select>
+                    <select
+                      class="w-24 border border-gray-300 rounded-md px-2 py-2 text-sm"
+                      [(ngModel)]="exp.endYear"
+                      [disabled]="exp.isPresent"
+                      (ngModelChange)="updateExp(exp.id)"
+                    >
+                      <option value="">Year</option>
+                      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <!-- Quill Editor for Experience -->
+                <div [id]="'exp-editor-' + exp.id" class="quill-editor-wrapper"></div>
+              </div>
+
+              <!-- AI Suggestions Button -->
+              <div class="mt-2 flex justify-end">
+                <button
+                  (click)="toggleExpSuggestions(exp.id)"
+                  [disabled]="loadingAI()"
+                  class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-full transition-all bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+                  [class.opacity-50]="loadingAI()"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <span>AI Suggestions</span>
+                </button>
+              </div>
+
+              <!-- AI Suggestions Display -->
+              <div
+                *ngIf="aiSuggestionsVisible.experiences[exp.id] && exp.suggestions && exp.suggestions.length > 0"
+                class="border-2 border-blue-400 rounded-xl bg-white"
+              >
+                <!-- Suggestions Header with Refresh Button -->
+                <div class="flex items-center justify-between px-4 py-2 border-b border-gray-200">
+                  <span class="text-sm font-medium text-gray-700">AI Suggestions</span>
+                  <button
+                    (click)="getSuggestionsForExperience(exp.id)"
+                    [disabled]="loadingAI()"
+                    class="p-1.5 rounded-full hover:bg-gray-100 transition-colors"
+                    [class.opacity-50]="loadingAI()"
+                    title="Refresh suggestions"
+                  >
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Suggestions List -->
+                <div class="p-3 space-y-2">
+                  <div
+                    *ngFor="let suggestion of exp.suggestions.slice(0, 3)"
+                    class="flex items-start gap-3 border border-gray-300 rounded-full px-4 py-3 hover:border-blue-400 hover:bg-blue-50 hover:shadow-sm transition-all cursor-pointer"
+                    (click)="applyExpSuggestion(exp.id, suggestion)"
+                  >
+                    <span class="text-blue-600 text-xl font-light flex-shrink-0">+</span>
+                    <p class="text-sm text-gray-700 leading-relaxed flex-1">{{ suggestion }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex justify-end gap-2 mt-4 pt-4 border-t">
+                <button
+                  (click)="deleteExp(exp.id)"
+                  class="px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded"
+                >
+                  Delete
+                </button>
+                <button
+                  (click)="toggleExpEntry(exp.id)"
+                  class="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button
+            (click)="addNewExperience()"
+            class="w-full border-2 border-dashed border-gray-300 rounded-lg py-3 text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors"
+          >
+            + Add Experience
+          </button>
+        </div>
+      </div>
+
+      <!-- Education Section -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div
+          class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50"
+          (click)="toggleSection('educations')"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-gray-400">::</span>
+            <h3 class="text-lg font-semibold">Education</h3>
+          </div>
+          <svg
+            class="w-5 h-5 transition-transform"
+            [class.rotate-180]="!sectionsCollapsed.educations"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+        </div>
+
+        <div *ngIf="!sectionsCollapsed.educations" class="p-4 pt-0 space-y-3">
+          <div
+            *ngFor="let edu of educations; trackBy: trackById"
+            class="border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+          >
+            <!-- Collapsed View -->
+            <div
+              *ngIf="!edu.expanded"
+              class="flex items-center justify-between p-4 cursor-pointer"
+              (click)="toggleEduEntry(edu.id)"
+            >
+              <div class="flex items-center gap-3">
+                <span class="text-gray-400">::</span>
+                <div>
+                  <div class="font-semibold text-gray-900">{{ edu.degree || 'Degree' }}</div>
+                  <div class="text-sm text-gray-600">{{ edu.school || 'School' }}</div>
+                </div>
+              </div>
+              <button class="p-2 hover:bg-gray-100 rounded-full" (click)="$event.stopPropagation(); toggleEduEntry(edu.id)">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Expanded View -->
+            <div *ngIf="edu.expanded" class="p-4 space-y-3">
+              <div class="flex justify-between items-center mb-4">
+                <h4 class="font-semibold">Education Details</h4>
+                <button
+                  (click)="toggleEduEntry(edu.id)"
+                  class="text-sm text-gray-600 hover:text-gray-900"
+                >
+                  Collapse
+                </button>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Degree/Program</label>
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                  [(ngModel)]="edu.degree"
+                  (ngModelChange)="updateEdu(edu.id)"
+                  placeholder="e.g., Bachelor of Science in Computer Science"
+                />
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">School</label>
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                    [(ngModel)]="edu.school"
+                    (ngModelChange)="updateEdu(edu.id)"
+                    placeholder="School name"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                    [(ngModel)]="edu.city"
+                    (ngModelChange)="updateEdu(edu.id)"
+                    placeholder="City"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Start date</label>
+                  <div class="flex gap-2">
+                    <select
+                      class="flex-1 border border-gray-300 rounded-md px-2 py-2 text-sm"
+                      [(ngModel)]="edu.startMonth"
+                      (ngModelChange)="updateEdu(edu.id)"
+                    >
+                      <option value="">Month</option>
+                      <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+                    </select>
+                    <select
+                      class="w-24 border border-gray-300 rounded-md px-2 py-2 text-sm"
+                      [(ngModel)]="edu.startYear"
+                      (ngModelChange)="updateEdu(edu.id)"
+                    >
+                      <option value="">Year</option>
+                      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1 flex items-center justify-end">
+                    <label class="inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        class="hidden"
+                        [(ngModel)]="edu.isPresent"
+                        (ngModelChange)="updateEdu(edu.id)"
+                      />
+                      <div class="relative">
+                        <div class="w-10 h-5 bg-gray-300 rounded-full transition-colors" [class.bg-blue-600]="edu.isPresent"></div>
+                        <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition-transform" [class.translate-x-5]="edu.isPresent"></div>
+                      </div>
+                      <span class="ml-2 text-xs text-gray-600">Present</span>
+                    </label>
+                  </label>
+                  <div class="flex gap-2">
+                    <select
+                      class="flex-1 border border-gray-300 rounded-md px-2 py-2 text-sm"
+                      [(ngModel)]="edu.endMonth"
+                      [disabled]="edu.isPresent"
+                      (ngModelChange)="updateEdu(edu.id)"
+                    >
+                      <option value="">Month</option>
+                      <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+                    </select>
+                    <select
+                      class="w-24 border border-gray-300 rounded-md px-2 py-2 text-sm"
+                      [(ngModel)]="edu.endYear"
+                      [disabled]="edu.isPresent"
+                      (ngModelChange)="updateEdu(edu.id)"
+                    >
+                      <option value="">Year</option>
+                      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <textarea
+                  class="w-full border border-gray-300 rounded-lg p-3 text-sm resize-y"
+                  rows="4"
+                  [(ngModel)]="edu.description"
+                  (ngModelChange)="updateEdu(edu.id)"
+                  placeholder="Relevant courses, achievements, honors..."
+                ></textarea>
+              </div>
+
+              <div class="flex justify-end gap-2 mt-4 pt-4 border-t">
+                <button
+                  (click)="deleteEdu(edu.id)"
+                  class="px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded"
+                >
+                  Delete
+                </button>
+                <button
+                  (click)="toggleEduEntry(edu.id)"
+                  class="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button
+            (click)="addNewEducation()"
+            class="w-full border-2 border-dashed border-gray-300 rounded-lg py-3 text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors"
+          >
+            + Add Education
+          </button>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div
+          class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50"
+          (click)="toggleSection('skills')"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-gray-400">::</span>
+            <h3 class="text-lg font-semibold">Skills</h3>
+          </div>
+          <svg
+            class="w-5 h-5 transition-transform"
+            [class.rotate-180]="!sectionsCollapsed.skills"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+        </div>
+
+        <div *ngIf="!sectionsCollapsed.skills" class="p-4 pt-0 space-y-2">
+          <div
+            *ngFor="let skill of skills; trackBy: trackById"
+            class="flex items-center gap-2 p-3 border border-gray-200 rounded-lg hover:border-gray-300"
+          >
+            <span class="text-gray-400">::</span>
+            <input
+              type="text"
+              class="flex-1 border-0 bg-transparent text-sm focus:outline-none"
+              [(ngModel)]="skill.skillName"
+              (ngModelChange)="updateSkill(skill.id)"
+              placeholder="Skill name"
+            />
+            <select
+              class="border border-gray-300 rounded-md px-2 py-1 text-sm"
+              [(ngModel)]="skill.skillLevel"
+              (ngModelChange)="updateSkill(skill.id)"
+            >
+              <option value="">Level</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+              <option value="Expert">Expert</option>
+            </select>
+            <button
+              (click)="deleteSkill(skill.id)"
+              class="p-1 hover:bg-red-50 rounded text-red-600"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <button
+            (click)="addNewSkill()"
+            class="w-full border-2 border-dashed border-gray-300 rounded-lg py-2 text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors"
+          >
+            + Add Skill
+          </button>
+        </div>
+      </div>
+
+      <!-- Languages Section -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div
+          class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50"
+          (click)="toggleSection('languages')"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-gray-400">::</span>
+            <h3 class="text-lg font-semibold">Languages</h3>
+          </div>
+          <svg
+            class="w-5 h-5 transition-transform"
+            [class.rotate-180]="!sectionsCollapsed.languages"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+        </div>
+
+        <div *ngIf="!sectionsCollapsed.languages" class="p-4 pt-0 space-y-2">
+          <div
+            *ngFor="let lang of languages; trackBy: trackById"
+            class="flex items-center gap-2 p-3 border border-gray-200 rounded-lg hover:border-gray-300"
+          >
+            <span class="text-gray-400">::</span>
+            <input
+              type="text"
+              class="flex-1 border-0 bg-transparent text-sm focus:outline-none"
+              [(ngModel)]="lang.languageName"
+              (ngModelChange)="updateLanguage(lang.id)"
+              placeholder="Language name"
+            />
+            <select
+              class="border border-gray-300 rounded-md px-2 py-1 text-sm"
+              [(ngModel)]="lang.languageLevel"
+              (ngModelChange)="updateLanguage(lang.id)"
+            >
+              <option value="">Level</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+              <option value="Native">Native</option>
+            </select>
+            <button
+              (click)="deleteLanguage(lang.id)"
+              class="p-1 hover:bg-red-50 rounded text-red-600"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <button
+            (click)="addNewLanguage()"
+            class="w-full border-2 border-dashed border-gray-300 rounded-lg py-2 text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors"
+          >
+            + Add Language
+          </button>
+        </div>
+      </div>
+
+      <!-- Courses Section -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div
+          class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50"
+          (click)="toggleSection('courses')"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-gray-400">::</span>
+            <h3 class="text-lg font-semibold">Courses</h3>
+          </div>
+          <svg
+            class="w-5 h-5 transition-transform"
+            [class.rotate-180]="!sectionsCollapsed.courses"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+        </div>
+
+        <div *ngIf="!sectionsCollapsed.courses" class="p-4 pt-0 space-y-2">
+          <div
+            *ngFor="let course of courses; trackBy: trackById"
+            class="p-3 border border-gray-200 rounded-lg hover:border-gray-300"
+          >
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-gray-400">::</span>
+              <input
+                type="text"
+                class="flex-1 border-0 bg-transparent font-medium text-sm focus:outline-none"
+                [(ngModel)]="course.courseName"
+                (ngModelChange)="updateCourse(course.id)"
+                placeholder="Course name"
+              />
+              <button
+                (click)="deleteCourse(course.id)"
+                class="p-1 hover:bg-red-50 rounded text-red-600"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <input
+              type="text"
+              class="w-full border-0 bg-transparent text-xs text-gray-600 focus:outline-none"
+              [(ngModel)]="course.institution"
+              (ngModelChange)="updateCourse(course.id)"
+              placeholder="Institution (optional)"
+            />
+          </div>
+
+          <button
+            (click)="addNewCourse()"
+            class="w-full border-2 border-dashed border-gray-300 rounded-lg py-2 text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors"
+          >
+            + Add Course
+          </button>
+        </div>
+      </div>
+
+      <!-- Certificates Section -->
+      <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div
+          class="flex items-center justify-between p-4 cursor-pointer hover:bg-gray-50"
+          (click)="toggleSection('certificates')"
+        >
+          <div class="flex items-center gap-3">
+            <span class="text-gray-400">::</span>
+            <h3 class="text-lg font-semibold">Certificates</h3>
+          </div>
+          <svg
+            class="w-5 h-5 transition-transform"
+            [class.rotate-180]="!sectionsCollapsed.certificates"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+          </svg>
+        </div>
+
+        <div *ngIf="!sectionsCollapsed.certificates" class="p-4 pt-0 space-y-2">
+          <div
+            *ngFor="let cert of certificates; trackBy: trackById"
+            class="p-3 border border-gray-200 rounded-lg hover:border-gray-300"
+          >
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-gray-400">::</span>
+              <input
+                type="text"
+                class="flex-1 border-0 bg-transparent font-medium text-sm focus:outline-none"
+                [(ngModel)]="cert.certificateTitle"
+                (ngModelChange)="updateCertificate(cert.id)"
+                placeholder="Certificate title"
+              />
+              <button
+                (click)="deleteCertificate(cert.id)"
+                class="p-1 hover:bg-red-50 rounded text-red-600"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <input
+              type="text"
+              class="w-full border-0 bg-transparent text-xs text-gray-600 focus:outline-none"
+              [(ngModel)]="cert.issuer"
+              (ngModelChange)="updateCertificate(cert.id)"
+              placeholder="Issuer (optional)"
+            />
+          </div>
+
+          <button
+            (click)="addNewCertificate()"
+            class="w-full border-2 border-dashed border-gray-300 rounded-lg py-2 text-sm text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-colors"
+          >
+            + Add Certificate
+          </button>
+        </div>
+      </div>
+    </div>
+  `,
+  styles: [`
+    :host {
+      display: block;
+    }
+
+    /* Ensure text in textareas can be selected */
+    textarea {
+      user-select: text !important;
+      -webkit-user-select: text !important;
+      -moz-user-select: text !important;
+      -ms-user-select: text !important;
+      cursor: text !important;
+    }
+
+    /* Prevent parent containers from blocking text selection */
+    .space-y-3, .p-4, .border {
+      user-select: auto !important;
+      -webkit-user-select: auto !important;
+    }
+
+    /* Placeholder for contenteditable */
+    [contenteditable][data-placeholder]:empty:before {
+      content: attr(data-placeholder);
+      color: #9ca3af;
+      pointer-events: none;
+      display: block;
+    }
+
+    /* Rich text styling in contenteditable */
+    [contenteditable] strong {
+      font-weight: bold;
+    }
+
+    [contenteditable] em {
+      font-style: italic;
+    }
+
+    [contenteditable] u {
+      text-decoration: underline;
+    }
+
+    [contenteditable] a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+  `]
+})
+export class LeftEditorComponent implements OnInit, AfterViewInit {
+  private store = inject(Store);
+  private importService = inject(ResumeImportService);
+
+  @ViewChild('profileEditor') profileEditorRef?: ElementRef<HTMLElement>;
+
+  // Quill editor instances
+  private profileQuill: Quill | null = null;
+  private experienceQuills = new Map<string, Quill>();
+
+  personalDetails: PersonalDetails = {};
+  profile: ProfileSummary = { content: '' };
+  experiences: ExperienceEntry[] = [];
+  educations: EducationEntry[] = [];
+  skills: SkillEntry[] = [];
+  languages: LanguageEntry[] = [];
+  courses: CourseEntry[] = [];
+  certificates: CertificateEntry[] = [];
+
+  sectionsCollapsed: any = {
+    experiences: false,
+    educations: false,
+    skills: false,
+    languages: false,
+    courses: false,
+    certificates: false
+  };
+
+  profileCollapsed = false;
+
+  loadingAI = signal<boolean>(false);
+
+  // Track which sections have AI suggestions visible
+  aiSuggestionsVisible: any = {
+    profile: false,
+    experiences: {}  // Will store by experience ID
+  };
+
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  years: number[] = [];
+
+  ngOnInit() {
+    // Generate years
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear + 10; year >= 1970; year--) {
+      this.years.push(year);
+    }
+
+    // Subscribe to state
+    this.store.select(ResumeNewState.personalDetails).subscribe(pd => this.personalDetails = pd);
+    this.store.select(ResumeNewState.profile).subscribe(p => {
+      this.profile = p;
+      // Only initialize contenteditable if user is not currently editing
+      // This prevents cursor jumps during typing
+      if (!this.isUserEditing) {
+        setTimeout(() => this.initProfileContentEditable(), 100);
+      }
+    });
+    this.store.select(ResumeNewState.experiences).subscribe(exp => {
+      this.experiences = exp;
+      // Only initialize if not editing
+      if (!this.isUserEditing) {
+        setTimeout(() => this.initExperienceContentEditables(), 100);
+      }
+    });
+    this.store.select(ResumeNewState.educations).subscribe(edu => this.educations = edu);
+    this.store.select(ResumeNewState.skills).subscribe(s => this.skills = s);
+    this.store.select(ResumeNewState.languages).subscribe(l => this.languages = l);
+    this.store.select(ResumeNewState.courses).subscribe(c => this.courses = c);
+    this.store.select(ResumeNewState.certificates).subscribe(cert => this.certificates = cert);
+    this.store.select(ResumeNewState.sectionsCollapsed).subscribe(sc => this.sectionsCollapsed = sc);
+  }
+
+  ngAfterViewInit() {
+    // Initialize Quill editors
+    setTimeout(() => {
+      this.initProfileQuill();
+      this.initExperienceQuills();
+    }, 100);
+  }
+
+  /**
+   * Initialize Quill editor for profile section
+   */
+  private initProfileQuill() {
+    if (!this.profileEditorRef) return;
+
+    // Create Quill instance
+    this.profileQuill = new Quill(this.profileEditorRef.nativeElement, {
+      theme: 'snow',
+      placeholder: 'Write a compelling summary about yourself...',
+      modules: {
+        toolbar: [
+          ['bold', 'italic', 'underline'],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          ['link'],
+          ['clean']
+        ]
+      }
+    });
+
+    // Set initial content
+    if (this.profile.content) {
+      this.profileQuill.root.innerHTML = this.profile.content;
+    }
+
+    // Listen for changes
+    this.profileQuill.on('text-change', () => {
+      const html = this.profileQuill!.root.innerHTML;
+      const plainText = this.profileQuill!.getText().trim();
+      this.profile.content = plainText ? html : '';
+      this.updateProfile();
+    });
+  }
+
+  /**
+   * Initialize Quill editors for experience sections
+   */
+  private initExperienceQuills() {
+    // We'll initialize these dynamically when experiences are expanded
+    // See toggleExpEntry method
+  }
+
+  updatePersonalDetails() {
+    this.store.dispatch(new UpdatePersonalDetails(this.personalDetails));
+  }
+
+  updateProfile() {
+    this.store.dispatch(new UpdateProfile(this.profile));
+  }
+
+  toggleSectionCollapse(section: string) {
+    this.profileCollapsed = !this.profileCollapsed;
+  }
+
+  toggleSection(section: any) {
+    this.store.dispatch(new ToggleSectionCollapsed(section));
+  }
+
+  // Experience methods
+  addNewExperience() {
+    this.store.dispatch(new AddExperience());
+  }
+
+  toggleExpEntry(id: string) {
+    this.store.dispatch(new ToggleExperienceExpanded(id));
+
+    // Initialize Quill for this experience when expanded
+    setTimeout(() => {
+      const exp = this.experiences.find(e => e.id === id);
+      if (exp && exp.expanded && !this.experienceQuills.has(id)) {
+        this.initExperienceQuill(id);
+      }
+    }, 100);
+  }
+
+  /**
+   * Initialize Quill editor for a specific experience
+   */
+  private initExperienceQuill(expId: string) {
+    const editorElement = document.getElementById(`exp-editor-${expId}`);
+    if (!editorElement) return;
+
+    const exp = this.experiences.find(e => e.id === expId);
+    if (!exp) return;
+
+    // Create Quill instance
+    const quill = new Quill(editorElement, {
+      theme: 'snow',
+      placeholder: 'Describe your responsibilities and achievements...',
+      modules: {
+        toolbar: [
+          ['bold', 'italic', 'underline'],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          ['link'],
+          ['clean']
+        ]
+      }
+    });
+
+    // Set initial content
+    if (exp.description) {
+      quill.root.innerHTML = exp.description;
+    }
+
+    // Listen for changes
+    quill.on('text-change', () => {
+      const html = quill.root.innerHTML;
+      const plainText = quill.getText().trim();
+      exp.description = plainText ? html : '';
+      this.updateExp(expId);
+    });
+
+    // Store the instance
+    this.experienceQuills.set(expId, quill);
+  }
+
+  updateExp(id: string) {
+    const exp = this.experiences.find(e => e.id === id);
+    if (exp) {
+      this.store.dispatch(new UpdateExperience(id, exp));
+    }
+  }
+
+  deleteExp(id: string) {
+    if (confirm('Delete this experience?')) {
+      this.store.dispatch(new DeleteExperience(id));
+    }
+  }
+
+  // Education methods
+  addNewEducation() {
+    this.store.dispatch(new AddEducation());
+  }
+
+  toggleEduEntry(id: string) {
+    this.store.dispatch(new ToggleEducationExpanded(id));
+  }
+
+  updateEdu(id: string) {
+    const edu = this.educations.find(e => e.id === id);
+    if (edu) {
+      this.store.dispatch(new UpdateEducation(id, edu));
+    }
+  }
+
+  deleteEdu(id: string) {
+    if (confirm('Delete this education entry?')) {
+      this.store.dispatch(new DeleteEducation(id));
+    }
+  }
+
+  // Skill methods
+  addNewSkill() {
+    this.store.dispatch(new AddSkill({ skillName: '', skillLevel: 'Intermediate' }));
+  }
+
+  updateSkill(id: string) {
+    const skill = this.skills.find(s => s.id === id);
+    if (skill) {
+      this.store.dispatch(new UpdateSkill(id, skill));
+    }
+  }
+
+  deleteSkill(id: string) {
+    this.store.dispatch(new DeleteSkill(id));
+  }
+
+  // Language methods
+  addNewLanguage() {
+    this.store.dispatch(new AddLanguage({ languageName: '', languageLevel: 'Intermediate' }));
+  }
+
+  updateLanguage(id: string) {
+    const lang = this.languages.find(l => l.id === id);
+    if (lang) {
+      this.store.dispatch(new UpdateLanguage(id, lang));
+    }
+  }
+
+  deleteLanguage(id: string) {
+    this.store.dispatch(new DeleteLanguage(id));
+  }
+
+  // Course methods
+  addNewCourse() {
+    this.store.dispatch(new AddCourse({ courseName: '', institution: '' }));
+  }
+
+  updateCourse(id: string) {
+    const course = this.courses.find(c => c.id === id);
+    if (course) {
+      this.store.dispatch(new UpdateCourse(id, course));
+    }
+  }
+
+  deleteCourse(id: string) {
+    this.store.dispatch(new DeleteCourse(id));
+  }
+
+  // Certificate methods
+  addNewCertificate() {
+    this.store.dispatch(new AddCertificate({ certificateTitle: '', issuer: '' }));
+  }
+
+  updateCertificate(id: string) {
+    const cert = this.certificates.find(c => c.id === id);
+    if (cert) {
+      this.store.dispatch(new UpdateCertificate(id, cert));
+    }
+  }
+
+  deleteCertificate(id: string) {
+    this.store.dispatch(new DeleteCertificate(id));
+  }
+
+  // AI Suggestions Toggle
+  toggleProfileSuggestions() {
+    if (this.aiSuggestionsVisible.profile) {
+      // If already visible, toggle it off
+      this.aiSuggestionsVisible.profile = false;
+    } else {
+      // If not visible, generate suggestions and show them
+      if (!this.profile.suggestions || this.profile.suggestions.length === 0) {
+        this.getSuggestionsForProfile();
+      }
+      this.aiSuggestionsVisible.profile = true;
+    }
+  }
+
+  toggleExpSuggestions(id: string) {
+    if (this.aiSuggestionsVisible.experiences[id]) {
+      // If already visible, toggle it off
+      this.aiSuggestionsVisible.experiences[id] = false;
+    } else {
+      // If not visible, generate suggestions if needed and show them
+      const exp = this.experiences.find(e => e.id === id);
+      if (exp && (!exp.suggestions || exp.suggestions.length === 0)) {
+        this.getSuggestionsForExperience(id);
+      }
+      this.aiSuggestionsVisible.experiences[id] = true;
+    }
+  }
+
+  // AI Suggestions
+  async getSuggestionsForProfile() {
+    // Prevent default to preserve selection in contenteditable
+    if (event) {
+      event.preventDefault();
+    }
+
+    // Focus the contenteditable div if not already focused
+    if (document.activeElement !== editableDiv) {
+      editableDiv.focus();
+    }
+
+    // Use document.execCommand for standard formatting
+    switch (format) {
+      case 'bold':
+        document.execCommand('bold', false);
+        break;
+      case 'italic':
+        document.execCommand('italic', false);
+        break;
+      case 'underline':
+        document.execCommand('underline', false);
+        break;
+      case 'link':
+        const url = prompt('Enter URL:', 'https://');
+        if (url) {
+          document.execCommand('createLink', false, url);
+        }
+        break;
+      case 'bulletList':
+        this.insertListMarker(editableDiv, '• ');
+        break;
+      case 'numberedList':
+        this.insertListMarker(editableDiv, '1. ');
+        break;
+      default:
+        return;
+    }
+
+    // Trigger input event for Angular to detect changes
+    editableDiv.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
+  /**
+   * Toggle list marker on current line - SIMPLIFIED VERSION
+   * Insert marker at the beginning of the current line where cursor is
+   */
+  private insertListMarker(editableDiv: HTMLElement, marker: string) {
+    editableDiv.focus();
+
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) {
+      return;
+    }
+
+    // Get current selection
+    const range = selection.getRangeAt(0);
+
+    // Find the current line by traversing to line start
+    let node = range.startContainer;
+    let offset = range.startOffset;
+
+    // If we're in a text node, find the start of the line
+    if (node.nodeType === Node.TEXT_NODE) {
+      const textContent = node.textContent || '';
+      const beforeCursor = textContent.substring(0, offset);
+
+      // Find the start of current line
+      const lineStart = beforeCursor.lastIndexOf('\n') + 1;
+
+      // Get the entire current line (from line start to end)
+      const afterLineStart = textContent.substring(lineStart);
+      const lineEndPos = afterLineStart.indexOf('\n');
+      const currentLine = lineEndPos === -1 ? afterLineStart : afterLineStart.substring(0, lineEndPos);
+
+      // Check if current line starts with a marker (after optional whitespace)
+      const trimmedLine = currentLine.trim();
+      const hasBullet = /^•\s/.test(trimmedLine);
+      const hasNumber = /^\d+\.\s/.test(trimmedLine);
+
+      // Determine if we should remove the marker
+      const shouldRemove = (marker === '• ' && hasBullet) || (marker.startsWith('1') && hasNumber);
+
+      if (shouldRemove) {
+        // Remove the marker from the line
+        const markerMatch = currentLine.match(/^(\s*)(•\s|\d+\.\s)/);
+        if (markerMatch) {
+          const leadingWhitespace = markerMatch[1].length;
+          const markerLength = markerMatch[2].length;
+
+          // Select and delete the marker
+          const deleteRange = document.createRange();
+          deleteRange.setStart(node, lineStart + leadingWhitespace);
+          deleteRange.setEnd(node, lineStart + leadingWhitespace + markerLength);
+
+          selection.removeAllRanges();
+          selection.addRange(deleteRange);
+
+          // Use execCommand to delete - this safely handles cursor position
+          document.execCommand('delete', false);
+        }
+      } else {
+        // Insert marker at start of line
+        const insertRange = document.createRange();
+        insertRange.setStart(node, lineStart);
+        insertRange.collapse(true);
+
+        selection.removeAllRanges();
+        selection.addRange(insertRange);
+
+        // Use execCommand to insert - this safely handles cursor position
+        document.execCommand('insertText', false, marker);
+
+        // If cursor wasn't at line start, try to restore approximate position
+        if (offset > lineStart) {
+          // Let the browser handle the cursor position naturally after insertion
+          // The cursor will be after the inserted marker, which is usually what we want
+        }
+      }
+    } else {
+      // Not in a text node, just insert at current position
+      document.execCommand('insertText', false, marker);
+    }
+
+    // Trigger input event
+    editableDiv.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
+  /**
+   * Select a range and replace with text (or delete if text is empty)
+   */
+  private selectAndModifyText(element: HTMLElement, startPos: number, endPos: number, newText: string) {
+    const selection = window.getSelection();
+    if (!selection) return;
+
+    // Build range using actual DOM traversal
+    const range = this.createDOMRange(element, startPos, endPos);
+    if (!range) return;
+
+    // Select the range
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    // Replace or delete
+    if (newText) {
+      document.execCommand('insertText', false, newText);
+    } else {
+      document.execCommand('delete', false);
+    }
+  }
+
+  /**
+   * Create a DOM range from start to end character positions
+   * Handles <br> elements correctly by walking the actual DOM tree
+   */
+  private createDOMRange(element: HTMLElement, startPos: number, endPos: number): Range | null {
+    const range = document.createRange();
+    let charCount = 0;
+    let startSet = false;
+    let endSet = false;
+
+    const walk = (node: Node) => {
+      if (startSet && endSet) return;
+
+      if (node.nodeType === Node.TEXT_NODE) {
+        const textLength = (node.textContent || '').length;
+
+        if (!startSet && charCount + textLength >= startPos) {
+          const offset = startPos - charCount;
+          range.setStart(node, offset);
+          startSet = true;
+        }
+
+        if (!endSet && charCount + textLength >= endPos) {
+          const offset = endPos - charCount;
+          range.setEnd(node, offset);
+          endSet = true;
+          return;
+        }
+
+        charCount += textLength;
+      } else if (node.nodeType === Node.ELEMENT_NODE && node.nodeName === 'BR') {
+        // <br> counts as 1 character (newline)
+        if (!startSet && charCount === startPos) {
+          range.setStartBefore(node);
+          startSet = true;
+        }
+        if (!endSet && charCount === endPos) {
+          range.setEndBefore(node);
+          endSet = true;
+          return;
+        }
+        charCount += 1;
+      } else {
+        // Recurse into element children
+        for (let i = 0; i < node.childNodes.length; i++) {
+          walk(node.childNodes[i]);
+          if (startSet && endSet) return;
+        }
+      }
+    };
+
+    walk(element);
+
+    // If we didn't find end position, set it to end of content
+    if (startSet && !endSet) {
+      range.setEnd(range.startContainer, range.startOffset);
+    }
+
+    return startSet ? range : null;
+  }
+
+  // AI Suggestions
+  async getSuggestionsForProfile() {
+    this.loadingAI.set(true);
+    try {
+      const response = await fetch('http://localhost:3000/api/ai/suggest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: this.profile.content || '',
+          locale: 'en',
+          title: 'Profile Summary',
+          description: this.profile.content || '',
+          keywords: [],
+          missing: [],
+          temperature: 1.2,  // Higher temperature for more diversity (0.8-1.5 range)
+          seed: Math.floor(Math.random() * 1000000),  // Random seed for different results each time
+          refresh: true,  // Force bypass cache
+          filters: {
+            requireVerb: true,
+            requireNumber: false,
+            wordMin: 15,
+            wordMax: 50,
+            star: false,
+            injectMissingKeywords: false,
+            diversity: true  // Request diverse suggestions
+          }
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('AI Response:', data); // Debug log
+        const suggestions = data.data?.suggestions?.map((s: any) => s.text) || [];
+        this.store.dispatch(new UpdateProfile({ suggestions: suggestions.slice(0, 3) }));
+        // Auto-show suggestions after fetching
+        this.aiSuggestionsVisible.profile = true;
+      } else {
+        console.error('AI API error:', response.status, await response.text());
+      }
+    } catch (error) {
+      console.error('Failed to get AI suggestions:', error);
+    } finally {
+      this.loadingAI.set(false);
+    }
+  }
+
+  async getSuggestionsForExperience(id: string) {
+    const exp = this.experiences.find(e => e.id === id);
+    if (!exp) return;
+
+    this.loadingAI.set(true);
+    try {
+      const response = await fetch('http://localhost:3000/api/ai/suggest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: exp.description || '',
+          locale: 'en',
+          title: exp.position || 'Job Position',
+          description: exp.description || '',
+          keywords: [],
+          missing: [],
+          temperature: 1.2,  // Higher temperature for more diversity (0.8-1.5 range)
+          seed: Math.floor(Math.random() * 1000000),  // Random seed for different results
+          refresh: true,  // Force bypass cache
+          filters: {
+            requireVerb: true,
+            requireNumber: true,
+            wordMin: 10,
+            wordMax: 30,
+            star: false,
+            diversity: true,  // Request diverse suggestions
+            injectMissingKeywords: true
+          }
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('AI Response:', data); // Debug log
+        const suggestions = data.data?.suggestions?.map((s: any) => s.text) || [];
+        this.store.dispatch(new UpdateExperience(id, { suggestions: suggestions.slice(0, 3) }));
+        // Auto-show suggestions after fetching
+        this.aiSuggestionsVisible.experiences[id] = true;
+      } else {
+        console.error('AI API error:', response.status, await response.text());
+      }
+    } catch (error) {
+      console.error('Failed to get AI suggestions:', error);
+    } finally {
+      this.loadingAI.set(false);
+    }
+  }
+
+  applyProfileSuggestion(suggestion: string) {
+    const currentContent = this.profile.content || '';
+    const newContent = currentContent ? `${currentContent}\n\n${suggestion}` : suggestion;
+    this.store.dispatch(new UpdateProfile({ content: newContent }));
+
+    // Analytics
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: 'ai_suggest_apply',
+      section: 'profile',
+      suggestionLength: suggestion.length
+    });
+  }
+
+  applyExpSuggestion(id: string, suggestion: string) {
+    const exp = this.experiences.find(e => e.id === id);
+    if (!exp) return;
+
+    const currentDesc = exp.description || '';
+    const newDesc = currentDesc ? `${currentDesc}\n• ${suggestion}` : `• ${suggestion}`;
+    this.store.dispatch(new UpdateExperience(id, { description: newDesc }));
+
+    // Analytics
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: 'ai_suggest_apply',
+      section: 'experience',
+      suggestionLength: suggestion.length
+    });
+  }
+
+  // Upload functionality
+  async onUpload(event: Event) {
+    console.log('📤 Upload triggered');
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+
+    if (!file) {
+      console.log('❌ No file selected');
+      return;
+    }
+
+    console.log('📎 File selected:', file.name, 'Size:', file.size, 'Type:', file.type);
+
+    // File size validation (15MB max)
+    if (file.size > 15 * 1024 * 1024) {
+      alert('File size must be less than 15MB');
+      return;
+    }
+
+    try {
+      console.log('⏳ Starting import...');
+      await this.importService.importFromFile(file);
+
+      console.log('✅ Import completed successfully');
+
+      // Analytics tracking
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: 'import_resume_success',
+        source: file.name.endsWith('.pdf') ? 'pdf' : file.name.endsWith('.docx') ? 'docx' : 'txt'
+      });
+
+      alert('Resume imported successfully!');
+    } catch (error) {
+      console.error('❌ Import failed:', error);
+      alert('Failed to import resume. Please try again. Error: ' + (error as Error).message);
+    }
+
+    // Reset input
+    input.value = '';
+  }
+
+  async importLinkedin() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.pdf';
+    input.onchange = async (e: Event) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        try {
+          await this.importService.importFromFile(file);
+
+          // Analytics tracking
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({
+            event: 'import_resume_success',
+            source: 'linkedin'
+          });
+
+          alert('LinkedIn profile imported successfully!');
+        } catch (error) {
+          console.error('LinkedIn import failed:', error);
+          alert('Failed to import LinkedIn profile. Please try again.');
+        }
+      }
+    };
+    input.click();
+  }
+
+  trackById(index: number, item: any) {
+    return item.id;
+  }
+
+  /**
+   * Convert markdown-style text to HTML for display in contenteditable
+   */
+  getFormattedContent(content?: string): string {
+    if (!content) return '';
+
+    let html = content;
+
+    // First, preserve formatting by converting markdown to HTML
+    // Bold: **text** -> <strong>text</strong>
+    html = html.replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>');
+
+    // Italic: *text* -> <em>text</em>
+    html = html.replace(/(?<!\*)\*(?!\*)([^\*]+)\*(?!\*)/g, '<em>$1</em>');
+
+    // Underline: already HTML tags, keep as-is
+
+    // Links: [text](url) -> <a href="url">text</a>
+    html = html.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2">$1</a>');
+
+    // Convert all line breaks to <br> tags
+    // This is critical for preserving line breaks in contenteditable
+    html = html.replace(/\n/g, '<br>');
+
+    return html;
+  }
+
+  /**
+   * Handle focus on profile contenteditable
+   */
+  onProfileFocus() {
+    this.isUserEditing = true;
+  }
+
+  /**
+   * Handle blur on profile contenteditable
+   */
+  onProfileBlur() {
+    this.isUserEditing = false;
+    this.updateProfile();
+  }
+
+  /**
+   * Handle input from profile contenteditable - convert HTML to markdown
+   */
+  onProfileInput(event: Event) {
+    const target = event.target as HTMLElement;
+    const html = target.innerHTML;
+
+    // Convert HTML back to markdown-style text for storage
+    let text = html;
+
+    // Handle different types of line breaks that browsers insert
+    // Order matters here!
+
+    // 1. Convert <div>content</div> to \ncontent
+    text = text.replace(/<div[^>]*>/gi, '\n');
+    text = text.replace(/<\/div>/gi, '');
+
+    // 2. Convert <p>content</p> to \ncontent
+    text = text.replace(/<p[^>]*>/gi, '\n');
+    text = text.replace(/<\/p>/gi, '');
+
+    // 3. Convert <br> to \n
+    text = text.replace(/<br\s*\/?>/gi, '\n');
+
+    // 4. Convert formatting tags back to markdown
+    // Convert <strong> or <b> back to **
+    text = text.replace(/<(strong|b)>(.*?)<\/(strong|b)>/gi, '**$2**');
+
+    // Convert <em> or <i> back to *
+    text = text.replace(/<(em|i)>(.*?)<\/(em|i)>/gi, '*$2*');
+
+    // Convert <a> back to [text](url)
+    text = text.replace(/<a\s+href="([^"]+)"[^>]*>(.*?)<\/a>/gi, '[$2]($1)');
+
+    // 5. Remove any remaining HTML tags
+    text = text.replace(/<[^>]+>/g, '');
+
+    // 6. Decode HTML entities
+    text = this.decodeHtmlEntities(text);
+
+    // 7. Clean up: remove leading newline if present
+    text = text.replace(/^\n+/, '');
+
+    // 8. Clean up: limit consecutive newlines to max 2
+    text = text.replace(/\n{3,}/g, '\n\n');
+
+    // Update local content and dispatch to state for real-time preview
+    // isUserEditing flag prevents re-initialization of HTML
+    this.profile.content = text;
+    this.updateProfile();
+  }
+
+  /**
+   * Handle focus on experience contenteditable
+   */
+  onExpFocus() {
+    this.isUserEditing = true;
+  }
+
+  /**
+   * Handle blur on experience contenteditable
+   */
+  onExpBlur(id: string) {
+    this.isUserEditing = false;
+    this.updateExp(id);
+  }
+
+  /**
+   * Handle input from experience contenteditable - convert HTML to markdown
+   */
+  onExpInput(event: Event, id: string) {
+    const target = event.target as HTMLElement;
+    const html = target.innerHTML;
+
+    // Convert HTML back to markdown-style text
+    let text = html;
+
+    // Handle different types of line breaks - order matters!
+    text = text.replace(/<div[^>]*>/gi, '\n');
+    text = text.replace(/<\/div>/gi, '');
+    text = text.replace(/<p[^>]*>/gi, '\n');
+    text = text.replace(/<\/p>/gi, '');
+    text = text.replace(/<br\s*\/?>/gi, '\n');
+
+    text = text.replace(/<strong>(.*?)<\/strong>/gi, '**$1**');
+    text = text.replace(/<em>(.*?)<\/em>/gi, '*$1*');
+    text = text.replace(/<a\s+href="([^"]+)"[^>]*>(.*?)<\/a>/gi, '[$2]($1)');
+    text = text.replace(/<[^>]+>/g, '');
+    text = this.decodeHtmlEntities(text);
+
+    // Clean up: remove leading newline and limit consecutive newlines
+    text = text.replace(/^\n+/, '');
+    text = text.replace(/\n{3,}/g, '\n\n');
+
+    // Update local content and dispatch for real-time preview
+    // isUserEditing flag prevents re-initialization of HTML
+    const exp = this.experiences.find(e => e.id === id);
+    if (exp) {
+      exp.description = text;
+      this.updateExp(id);
+    }
+  }
+
+  /**
+   * Decode HTML entities
+   */
+  private decodeHtmlEntities(text: string): string {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = text;
+    return textarea.value;
+  }
+}

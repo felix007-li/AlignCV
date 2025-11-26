@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <text x="40" y="60" font-family="Inter, Arial" font-size="24" font-weight="bold" fill="#111827">AlignCV — UI Kit</text>
+  <rect x="40" y="80" width="160" height="44" rx="10" fill="#2563EB" stroke="#06B6D4"/>
+  <text x="78" y="108" font-family="Inter, Arial" font-size="14" fill="#FFFFFF">Primary</text>
+  <rect x="220" y="80" width="160" height="44" rx="10" fill="#FFFFFF" stroke="#9CA3AF"/>
+  <text x="260" y="108" font-family="Inter, Arial" font-size="14" fill="#111827">Default</text>
+  <text x="40" y="160" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">Inputs</text>
+  <rect x="40" y="180" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#9CA3AF"/>
+  <text x="50" y="208" font-family="Inter, Arial" font-size="14" fill="#6B7280">Text input</text>
+  <text x="40" y="250" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">Chips</text>
+  <rect x="40" y="270" width="120" height="32" rx="16" fill="#DBEAFE" stroke="#93C5FD"/>
+  <text x="60" y="292" font-family="Inter, Arial" font-size="12" fill="#111827">Brand chip</text>
+  <text x="40" y="330" font-family="Inter, Arial" font-size="16" font-weight="bold" fill="#111827">Card</text>
+  <rect x="40" y="350" width="360" height="180" rx="12" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="64" y="380" font-family="Inter, Arial" font-size="14" fill="#111827">Card title</text>
+</svg>

@@ -1,0 +1,33 @@
+{
+  "paywall": {
+    "variant": {
+      "A": {
+        "headline": "Estudante — pagamento único R$1,99",
+        "sub": "PDF/DOCX instantâneo com preço verificado.",
+        "student": "Estudante — pagamento único",
+        "public": "Público — pagamento único",
+        "monthly": "Mensal — ilimitado",
+        "noRenew": "Sem renovação automática",
+        "cancel": "Cancele a qualquer momento"
+      },
+      "B": {
+        "headline": "Baixe seu currículo compatível com ATS",
+        "sub": "Sem assinatura. Funciona nos principais ATS.",
+        "student": "Estudante — pagamento único",
+        "public": "Público — download único",
+        "monthly": "Acesso mensal",
+        "noRenew": "Sem renovação automática",
+        "cancel": "Cancele a qualquer momento"
+      },
+      "C": {
+        "headline": "Melhor oferta para estudantes",
+        "sub": "Preço especial R$1,99 por tempo limitado.",
+        "student": "Especial Estudante",
+        "public": "Público — pagamento único",
+        "monthly": "Acesso mensal",
+        "noRenew": "Sem renovação automática",
+        "cancel": "Cancele a qualquer momento"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "mode": "template+llm",
+  "primary": "openai",
+  "cache_ttl_ms": 90000,
+  "llm": {
+    "max_input_tokens": 1024,
+    "max_output_tokens": 180,
+    "temperature": 0.4,
+    "timeout_ms": 4000,
+    "retries": 2
+  },
+  "weights": {
+    "coverage": 0.45,
+    "diversity": 0.25,
+    "anti_similarity": 0.15,
+    "readability": 0.15
+  },
+  "pricing": {
+    "currency": "USD",
+    "input_per_1k": 0.00015,
+    "output_per_1k": 0.0006
+  },
+  "budget": {
+    "monthly_cap": 50.0,
+    "burst_cap": 2.0,
+    "fallback": "template"
+  }
+}

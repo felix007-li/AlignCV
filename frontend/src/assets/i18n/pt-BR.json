@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Início",
+    "resume": "Currículo",
+    "cover": "Carta de apresentação",
+    "pricing": "Preços",
+    "faq": "FAQ",
+    "dashboard": "Painel"
+  },
+  "home": {
+    "hero": "Crie currículos e cartas prontos para vaga",
+    "cta": "Comece grátis →",
+    "how": "Como funciona"
+  },
+  "app": {
+    "dashboard": "Painel",
+    "resume": "Currículo",
+    "cover": "Carta de apresentação",
+    "newResume": "Novo currículo",
+    "newCover": "Nova carta de apresentação"
+  },
+  "seo": {
+    "loading": "Carregando conteúdo...",
+    "notFound": "Conteúdo não encontrado",
+    "goHome": "Voltar para o início",
+    "createWithTemplate": "Criar currículo com este modelo"
+  }
+}

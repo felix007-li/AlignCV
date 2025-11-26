@@ -1,0 +1,18 @@
+<h1>Resume</h1>
+
+<section class="hero">
+  <div class="copy">
+    <h2>Create new resume</h2>
+    <p>Start with a template or a blank canvas.</p>
+  </div>
+  <button class="btn-primary">New Resume</button>
+</section>
+
+<h3>Your resumes</h3>
+<div class="grid">
+  <div class="card" *ngFor="let r of items">
+    <h4>{{ r.title }}</h4>
+    <p class="muted">Updated {{ r.updated }}</p>
+    <button class="btn-outline">Open →</button>
+  </div>
+</div>
