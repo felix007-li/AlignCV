@@ -4,38 +4,23 @@ import { map } from 'rxjs/operators';
 import { Template, TemplateMetadata, TemplateTokens } from '../models/template.model';
 import { TEMPLATE_TOKENS } from '../models/template-tokens.data';
 
-// Hardcoded template metadata to avoid HttpClient dependency
+// Curated 15 templates (12 original + 3 CVWizard-inspired)
 const TEMPLATE_METADATA: TemplateMetadata[] = [
-  { id: 'jr-even', label: 'Even (JR)', origin: 'jsonresume-theme-even', source_url: '', style_tags: ['flat', 'clean'], industry_tags: ['software'] },
-  { id: 'jr-elegant', label: 'Elegant (JR)', origin: 'jsonresume-theme-elegant', source_url: '', style_tags: ['card'], industry_tags: ['design'] },
-  { id: 'jr-flat', label: 'Flat (JR)', origin: 'jsonresume-theme-flat', source_url: '', style_tags: ['minimal'], industry_tags: ['software'] },
-  { id: 'jr-paper', label: 'Paper (JR)', origin: 'jsonresume-theme-paper', source_url: '', style_tags: ['paper'], industry_tags: ['academia'] },
-  { id: 'jr-paperpp', label: 'Paper++ (JR)', origin: 'jsonresume-theme-paper-plus-plus', source_url: '', style_tags: ['paper'], industry_tags: ['general'] },
-  { id: 'jr-microdata', label: 'Microdata (JR)', origin: 'jsonresume-theme-microdata', source_url: '', style_tags: ['seo'], industry_tags: ['software'] },
-  { id: 'jr-kendall', label: 'Kendall (JR)', origin: 'jsonresume-theme-kendall', source_url: '', style_tags: ['two-column'], industry_tags: ['data'] },
-  { id: 'jr-classy', label: 'Classy (JR)', origin: 'jsonresume-theme-classy', source_url: '', style_tags: ['classic'], industry_tags: ['marketing'] },
-  { id: 'jr-compact', label: 'Compact (JR)', origin: 'jsonresume-theme-compact', source_url: '', style_tags: ['compact'], industry_tags: ['student'] },
-  { id: 'jr-modern', label: 'Modern (JR)', origin: 'jsonresume-theme-modern', source_url: '', style_tags: ['modern'], industry_tags: ['software'] },
-  { id: 'jr-slick', label: 'Slick (JR)', origin: 'jsonresume-theme-slick', source_url: '', style_tags: ['slick'], industry_tags: ['design'] },
-  { id: 'jr-timeline', label: 'Timeline (JR)', origin: 'jsonresume-theme-timeline', source_url: '', style_tags: ['timeline'], industry_tags: ['project'] },
-  { id: 'jr-techlead', label: 'TechLead (JR)', origin: 'jsonresume-theme-techlead', source_url: '', style_tags: ['bold'], industry_tags: ['software'] },
-  { id: 'jr-onepage', label: 'OnePage (JR)', origin: 'jsonresume-theme-onepage', source_url: '', style_tags: ['one-page'], industry_tags: ['student'] },
-  { id: 'jr-standard', label: 'Standard (JR)', origin: 'jsonresume-theme-standard-resume', source_url: '', style_tags: ['standard'], industry_tags: ['general'] },
-  { id: 'jr-hired', label: 'Hired (JR)', origin: 'jsonresume-theme-hired', source_url: '', style_tags: ['panel'], industry_tags: ['sales'] },
-  { id: 'jr-cvstrap', label: 'CVStrap (JR)', origin: 'jsonresume-theme-cvstrap', source_url: '', style_tags: ['bootstrap'], industry_tags: ['general'] },
-  { id: 'jr-tachyons', label: 'Tachyons (JR)', origin: 'jsonresume-theme-tachyons-clean', source_url: '', style_tags: ['clean'], industry_tags: ['software'] },
-  { id: 'jr-stackoverflowed', label: 'StackOverflowed (JR)', origin: 'jsonresume-theme-stackoverflowed', source_url: '', style_tags: ['cards'], industry_tags: ['software'] },
-  { id: 'jr-dev-ats', label: 'Dev ATS (JR)', origin: 'jsonresume-theme-dev-ats', source_url: '', style_tags: ['ATS'], industry_tags: ['software'] },
-  { id: 'lt-awesomecv', label: 'Awesome‑CV (LX)', origin: 'Awesome-CV', source_url: '', style_tags: ['two-column'], industry_tags: ['engineering'] },
-  { id: 'lt-altacv', label: 'AltaCV (LX)', origin: 'AltaCV', source_url: '', style_tags: ['two-column'], industry_tags: ['software'] },
-  { id: 'lt-moderncv', label: 'moderncv (LX)', origin: 'moderncv', source_url: '', style_tags: ['classic'], industry_tags: ['academia'] },
-  { id: 'lt-friggeri', label: 'Friggeri (LX)', origin: 'Friggeri CV', source_url: '', style_tags: ['two-column'], industry_tags: ['research'] },
-  { id: 'lt-deedy', label: 'Deedy (LX)', origin: 'Deedy Resume', source_url: '', style_tags: ['two-column'], industry_tags: ['software'] },
-  { id: 'lt-twenty', label: 'Twenty Seconds (LX)', origin: 'Twenty Seconds CV', source_url: '', style_tags: ['one-page'], industry_tags: ['marketing'] },
-  { id: 'lt-altacv-dark', label: 'AltaCV Dark (LX)', origin: 'AltaCV fork', source_url: '', style_tags: ['dark-mode'], industry_tags: ['design'] },
-  { id: 'lt-moderncv-casual', label: 'moderncv Casual (LX)', origin: 'moderncv', source_url: '', style_tags: ['casual'], industry_tags: ['general'] },
-  { id: 'lt-friggeri-boosted', label: 'Friggeri Boosted (LX)', origin: 'Friggeri forks', source_url: '', style_tags: ['palette'], industry_tags: ['data'] },
-  { id: 'lt-awesomecv-letter', label: 'Awesome‑CV Letter (LX)', origin: 'Awesome-CV letter', source_url: '', style_tags: ['letter'], industry_tags: ['general'] }
+  { id: 'jr-modern', label: 'Modern', origin: 'jsonresume-theme-modern (MIT)', source_url: '', style_tags: ['modern', 'simple', 'clean'], industry_tags: ['software', 'product', 'general'] },
+  { id: 'jr-elegant', label: 'Elegant', origin: 'jsonresume-theme-elegant', source_url: '', style_tags: ['card', 'responsive', 'elegant'], industry_tags: ['product', 'design', 'marketing'] },
+  { id: 'jr-even', label: 'Even', origin: 'jsonresume-theme-even (MIT)', source_url: '', style_tags: ['flat', 'single-color', 'clean'], industry_tags: ['software', 'general'] },
+  { id: 'jr-compact', label: 'Compact', origin: 'jsonresume-theme-compact', source_url: '', style_tags: ['compact', 'single-page', 'minimal'], industry_tags: ['student', 'software'] },
+  { id: 'jr-timeline', label: 'Timeline', origin: 'jsonresume-theme-timeline-fixed', source_url: '', style_tags: ['timeline', 'sections'], industry_tags: ['project', 'consulting'] },
+  { id: 'jr-dev-ats', label: 'Developer ATS', origin: 'jsonresume-theme-dev-ats', source_url: '', style_tags: ['ATS', 'developer', 'optimized'], industry_tags: ['software', 'data', 'engineering'] },
+  { id: 'lt-awesomecv', label: 'Awesome CV', origin: 'Awesome-CV (LPPL 1.3c)', source_url: '', style_tags: ['two-column', 'accent-left', 'professional'], industry_tags: ['general', 'engineering', 'software'] },
+  { id: 'lt-altacv', label: 'AltaCV', origin: 'AltaCV (LPPL 1.3c)', source_url: '', style_tags: ['two-column', 'pill-headings', 'creative'], industry_tags: ['software', 'design'] },
+  { id: 'lt-moderncv', label: 'ModernCV', origin: 'moderncv (LPPL 1.3c)', source_url: '', style_tags: ['classic', 'header-block', 'professional'], industry_tags: ['general', 'academia', 'engineering'] },
+  { id: 'lt-friggeri', label: 'Friggeri', origin: 'Friggeri CV (MIT/CC-BY variants)', source_url: '', style_tags: ['two-column', 'color-sections', 'creative'], industry_tags: ['research', 'data', 'academia'] },
+  { id: 'lt-deedy', label: 'Deedy', origin: 'Deedy Resume (mixed licenses)', source_url: '', style_tags: ['two-column', 'high-contrast', 'bold'], industry_tags: ['software', 'student', 'tech'] },
+  { id: 'lt-twenty', label: 'Twenty Seconds', origin: 'Twenty Seconds CV (MIT/LPPL variants)', source_url: '', style_tags: ['one-page', 'timeline', 'visual'], industry_tags: ['marketing', 'product', 'design'] },
+  { id: 'cw-classic', label: 'Classic', origin: 'CVWizard-inspired', source_url: '', style_tags: ['traditional', 'two-column', 'gray'], industry_tags: ['general', 'professional'] },
+  { id: 'cw-horizontal', label: 'Horizontal', origin: 'CVWizard-inspired', source_url: '', style_tags: ['horizontal-bars', 'modern', 'blue'], industry_tags: ['general', 'creative'] },
+  { id: 'cw-vertical', label: 'Vertical', origin: 'CVWizard-inspired', source_url: '', style_tags: ['vertical-bar', 'modern', 'gradient'], industry_tags: ['general', 'creative'] }
 ];
 
 @Injectable({

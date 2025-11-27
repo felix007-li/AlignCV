@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210" height="297" viewBox="0 0 210 297">
+  <!-- Paper background -->
+  <rect width="210" height="297" fill="#ffffff"/>
+  
+  <!-- Top blue bar (40px) -->
+  <rect x="0" y="0" width="210" height="40" fill="#3498db"/>
+  <text x="15" y="26" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">LI LI - Web Developer</text>
+  
+  <!-- Bottom blue bar (40px) -->
+  <rect x="0" y="257" width="210" height="40" fill="#3498db"/>
+  
+  <!-- Content area -->
+  <text x="15" y="60" font-family="Arial, sans-serif" font-size="5" fill="#7f8c8d">email@mail.com • (438) 928-3288 • Montreal, QC</text>
+  
+  <!-- Profile -->
+  <text x="15" y="80" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#3498db">PROFILE</text>
+  <rect x="15" y="83" width="180" height="2" fill="#3498db" opacity="0.5"/>
+  <text x="15" y="93" font-family="Arial, sans-serif" font-size="5" fill="#2c3e50">Eight years experience in web programming.</text>
+  <text x="15" y="100" font-family="Arial, sans-serif" font-size="5" fill="#2c3e50">Proficiency with Angular, React.js, Vue.js...</text>
+  
+  <!-- Experience -->
+  <text x="15" y="120" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#3498db">EXPERIENCE</text>
+  <rect x="15" y="123" width="180" height="2" fill="#3498db" opacity="0.5"/>
+  <text x="15" y="133" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="#2c3e50">Web Developer</text>
+  <text x="155" y="133" font-family="Arial, sans-serif" font-size="5" fill="#7f8c8d">2020 - Present</text>
+  <text x="15" y="140" font-family="Arial, sans-serif" font-size="5" fill="#7f8c8d">Freelance</text>
+  <text x="15" y="148" font-family="Arial, sans-serif" font-size="5" fill="#2c3e50">• Developing Online Education Platform</text>
+  
+  <!-- Skills -->
+  <text x="15" y="170" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#3498db">SKILLS</text>
+  <rect x="15" y="173" width="180" height="2" fill="#3498db" opacity="0.5"/>
+  <text x="15" y="183" font-family="Arial, sans-serif" font-size="5" fill="#2c3e50">Angular • React.js • Vue.js • TypeScript • GraphQL</text>
+  
+  <!-- Footer in bottom bar -->
+  <text x="105" y="283" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="#ffffff" text-anchor="middle">Horizontal</text>
+</svg>

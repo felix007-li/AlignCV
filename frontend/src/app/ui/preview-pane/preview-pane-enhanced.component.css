@@ -1,0 +1,182 @@
+/* Enhanced Resume Preview with Template Token Support */
+
+.resume-preview-container {
+  font-family: var(--font-family, 'Arial, sans-serif');
+  background: var(--color-bg, #ffffff);
+  color: var(--color-text, #2c3e50);
+  line-height: var(--line-height, 1.5);
+}
+
+.resume-canvas {
+  min-height: 27cm;
+}
+
+/* Header styling */
+.resume-header {
+  text-align: var(--header-align, left);
+  margin-bottom: var(--spacing-section, 16px);
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-primary, #3b82f6);
+}
+
+.resume-name {
+  font-size: var(--font-size-heading, 24px);
+  font-weight: 700;
+  color: var(--color-text, #1f2937);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.resume-subtitle {
+  font-size: var(--font-size-body, 14px);
+  color: var(--color-muted, #6b7280);
+  margin-bottom: 8px;
+}
+
+.resume-contact {
+  font-size: var(--font-size-small, 11px);
+  color: var(--color-muted, #6b7280);
+}
+
+/* Section headings - different styles */
+.section-heading {
+  font-size: calc(var(--font-size-heading, 18px) - 2px);
+  font-weight: 600;
+  color: var(--color-primary, #1f2937);
+  margin-bottom: var(--spacing-item, 8px);
+  margin-top: var(--spacing-section, 16px);
+}
+
+/* Section heading style: caps */
+.section-heading[data-style="caps"] {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: calc(var(--font-size-body, 14px) + 2px);
+}
+
+/* Section heading style: rule */
+.section-heading[data-style="rule"] {
+  border-bottom: 1px solid var(--color-border, #e5e7eb);
+  padding-bottom: 4px;
+}
+
+/* Section heading style: bar */
+.section-heading[data-style="bar"] {
+  border-left: 4px solid var(--color-primary, #3b82f6);
+  padding-left: 12px;
+}
+
+/* Section heading style: pill */
+.section-heading[data-style="pill"] {
+  background: var(--color-primary, #3b82f6);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* Entry items */
+.entry-item {
+  margin-bottom: var(--spacing-item, 8px);
+}
+
+.entry-title {
+  font-size: var(--font-size-body, 14px);
+  font-weight: 600;
+  color: var(--color-text, #111827);
+}
+
+.entry-meta {
+  font-size: var(--font-size-small, 11px);
+  color: var(--color-muted, #6b7280);
+}
+
+.entry-content {
+  font-size: var(--font-size-body, 14px);
+  color: var(--color-text, #374151);
+  line-height: var(--line-height, 1.5);
+}
+
+/* Bullet styles */
+.entry-content ::ng-deep ul {
+  list-style-type: var(--bullet-style, disc);
+}
+
+.entry-content ::ng-deep ul[data-bullet="dot"] {
+  list-style-type: disc;
+}
+
+.entry-content ::ng-deep ul[data-bullet="dash"] {
+  list-style-type: '- ';
+}
+
+.entry-content ::ng-deep ul[data-bullet="none"] {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Layout: Two column with sidebar */
+.resume-canvas[data-columns="2"] {
+  display: grid;
+  grid-template-columns: var(--sidebar-width, 30%) 1fr;
+  gap: 24px;
+}
+
+.resume-canvas[data-columns="2"][data-sidebar="left"] .sidebar {
+  grid-column: 1;
+  order: -1;
+}
+
+.resume-canvas[data-columns="2"][data-sidebar="right"] .sidebar {
+  grid-column: 2;
+}
+
+/* Compact spacing modifier */
+.resume-canvas[data-compact="true"] {
+  --spacing-section: 10px;
+  --spacing-item: 4px;
+  --font-size-body: 10px;
+  --font-size-heading: 13px;
+}
+
+/* Font family presets */
+.resume-canvas {
+  font-family: var(--font-family);
+}
+
+/* Quill content styling */
+.entry-content ::ng-deep p {
+  margin-bottom: 0.5rem;
+}
+
+.entry-content ::ng-deep strong {
+  font-weight: 600;
+}
+
+.entry-content ::ng-deep ul,
+.entry-content ::ng-deep ol {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.entry-content ::ng-deep li {
+  margin-bottom: 0.25rem;
+}
+
+/* Quill alignment classes */
+.entry-content ::ng-deep .ql-align-left {
+  text-align: left;
+}
+
+.entry-content ::ng-deep .ql-align-center {
+  text-align: center;
+}
+
+.entry-content ::ng-deep .ql-align-right {
+  text-align: right;
+}
+
+.entry-content ::ng-deep .ql-align-justify {
+  text-align: justify;
+}

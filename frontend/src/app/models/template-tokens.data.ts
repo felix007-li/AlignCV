@@ -7,10 +7,10 @@ import { TemplateTokens } from './template.model';
 export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
   'jr-even': {
     fontFamily: "'Helvetica Neue', Arial, sans-serif",
-    fontSize: { body: 11, heading: 14, small: 9 },
-    lineHeight: 1.4,
+    fontSize: { body: 14, heading: 19, small: 12 },  // 增大字体
+    lineHeight: 1.6,
     palette: {
-      primary: '#2ecc71',
+      primary: '#3498db',  // 蓝色
       text: '#2c3e50',
       muted: '#7f8c8d',
       bg: '#ffffff',
@@ -21,33 +21,33 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
       sidebar: null,
       sidebarWidth: null,
       headerAlign: 'left',
-      sectionHeadingStyle: 'caps',
+      sectionHeadingStyle: 'bar',  // 改为bar样式
       bulletStyle: 'dot'
     },
-    spacing: { section: 16, item: 8 },
+    spacing: { section: 20, item: 10 },
     letter: { marginTop: 40, marginSides: 50, signatureGap: 30 }
   },
 
   'jr-elegant': {
     fontFamily: 'Georgia, "Times New Roman", serif',
-    fontSize: { body: 11, heading: 15, small: 9 },
-    lineHeight: 1.5,
+    fontSize: { body: 13, heading: 17, small: 11 },  // 增大字体
+    lineHeight: 1.6,
     palette: {
-      primary: '#2c3e50',
+      primary: '#34495e',  // 深蓝灰色
       text: '#2c3e50',
       muted: '#95a5a6',
       bg: '#f9f9f9',
       border: '#dfe6e9'
     },
     layout: {
-      columns: 1,
-      sidebar: null,
-      sidebarWidth: null,
-      headerAlign: 'center',
+      columns: 2,           // 改为双栏
+      sidebar: 'left',      // 左侧边栏
+      sidebarWidth: '32%',
+      headerAlign: 'left',
       sectionHeadingStyle: 'rule',
       bulletStyle: 'dash'
     },
-    spacing: { section: 18, item: 10 },
+    spacing: { section: 20, item: 12 },
     letter: { marginTop: 45, marginSides: 55, signatureGap: 35 }
   },
 
@@ -191,35 +191,12 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
 
   'jr-compact': {
     fontFamily: 'Arial, sans-serif',
-    fontSize: { body: 9, heading: 11, small: 7 },
-    lineHeight: 1.2,
+    fontSize: { body: 12, heading: 16, small: 10 },  // 大幅增大字体
+    lineHeight: 1.4,
     palette: {
-      primary: '#3498db',
+      primary: '#e67e22',  // 橙色
       text: '#2c3e50',
       muted: '#7f8c8d',
-      bg: '#ffffff',
-      border: '#ecf0f1'
-    },
-    layout: {
-      columns: 1,
-      sidebar: null,
-      sidebarWidth: null,
-      headerAlign: 'left',
-      sectionHeadingStyle: 'caps',
-      bulletStyle: 'dot'
-    },
-    spacing: { section: 10, item: 4 },
-    letter: { marginTop: 30, marginSides: 40, signatureGap: 20 }
-  },
-
-  'jr-modern': {
-    fontFamily: '"Open Sans", sans-serif',
-    fontSize: { body: 11, heading: 14, small: 9 },
-    lineHeight: 1.5,
-    palette: {
-      primary: '#2980b9',
-      text: '#34495e',
-      muted: '#95a5a6',
       bg: '#ffffff',
       border: '#ecf0f1'
     },
@@ -232,6 +209,29 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
       bulletStyle: 'dot'
     },
     spacing: { section: 16, item: 8 },
+    letter: { marginTop: 30, marginSides: 40, signatureGap: 20 }
+  },
+
+  'jr-modern': {
+    fontFamily: '"Open Sans", sans-serif',
+    fontSize: { body: 13, heading: 18, small: 11 },  // 增大字体
+    lineHeight: 1.6,
+    palette: {
+      primary: '#a0522d',  // 深棕红色 (sienna)
+      text: '#2c3e50',
+      muted: '#7f8c8d',
+      bg: '#ffffff',
+      border: '#ecf0f1'
+    },
+    layout: {
+      columns: 2,              // 改为双栏
+      sidebar: 'left',         // 左侧边栏
+      sidebarWidth: '30%',     // 30%宽度
+      headerAlign: 'left',
+      sectionHeadingStyle: 'bar',
+      bulletStyle: 'dot'
+    },
+    spacing: { section: 18, item: 10 },
     letter: { marginTop: 40, marginSides: 50, signatureGap: 30 }
   },
 
@@ -260,19 +260,19 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
 
   'jr-timeline': {
     fontFamily: '"Segoe UI", sans-serif',
-    fontSize: { body: 11, heading: 14, small: 9 },
-    lineHeight: 1.4,
+    fontSize: { body: 13, heading: 17, small: 11 },  // 增大字体
+    lineHeight: 1.5,
     palette: {
-      primary: '#16a085',
+      primary: '#16a085',  // 青绿色
       text: '#2c3e50',
       muted: '#7f8c8d',
       bg: '#ffffff',
       border: '#bdc3c7'
     },
     layout: {
-      columns: 1,
-      sidebar: null,
-      sidebarWidth: null,
+      columns: 2,           // 改为双栏
+      sidebar: 'left',      // 左侧边栏
+      sidebarWidth: '28%',
       headerAlign: 'left',
       sectionHeadingStyle: 'pill',
       bulletStyle: 'dot'
@@ -444,10 +444,10 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
 
   'jr-dev-ats': {
     fontFamily: 'Calibri, sans-serif',
-    fontSize: { body: 11, heading: 13, small: 9 },
-    lineHeight: 1.3,
+    fontSize: { body: 13, heading: 17, small: 11 },  // 增大字体
+    lineHeight: 1.5,
     palette: {
-      primary: '#0077b5',
+      primary: '#0077b5',  // LinkedIn蓝
       text: '#000000',
       muted: '#666666',
       bg: '#ffffff',
@@ -458,19 +458,19 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
       sidebar: null,
       sidebarWidth: null,
       headerAlign: 'left',
-      sectionHeadingStyle: 'caps',
+      sectionHeadingStyle: 'bar',
       bulletStyle: 'dot'
     },
-    spacing: { section: 14, item: 6 },
+    spacing: { section: 18, item: 9 },
     letter: { marginTop: 36, marginSides: 46, signatureGap: 26 }
   },
 
   'lt-awesomecv': {
     fontFamily: '"Source Sans Pro", sans-serif',
-    fontSize: { body: 11, heading: 16, small: 9 },
-    lineHeight: 1.5,
+    fontSize: { body: 13, heading: 18, small: 11 },  // 增大字体
+    lineHeight: 1.6,
     palette: {
-      primary: '#0395de',
+      primary: '#0395de',  // 蓝色侧边栏
       text: '#333333',
       muted: '#666666',
       bg: '#ffffff',
@@ -479,21 +479,21 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
     layout: {
       columns: 2,
       sidebar: 'left',
-      sidebarWidth: '28%',
+      sidebarWidth: '30%',  // 增大到30%
       headerAlign: 'left',
       sectionHeadingStyle: 'bar',
       bulletStyle: 'dot'
     },
-    spacing: { section: 18, item: 9 },
+    spacing: { section: 20, item: 10 },
     letter: { marginTop: 42, marginSides: 52, signatureGap: 32 }
   },
 
   'lt-altacv': {
     fontFamily: '"Lato", sans-serif',
-    fontSize: { body: 10, heading: 14, small: 8 },
-    lineHeight: 1.4,
+    fontSize: { body: 13, heading: 17, small: 11 },  // 增大字体
+    lineHeight: 1.5,
     palette: {
-      primary: '#10a37f',
+      primary: '#2ecc71',  // 改为更鲜艳的绿色（像CVWizard的Casual）
       text: '#2c3e50',
       muted: '#7f8c8d',
       bg: '#ffffff',
@@ -502,21 +502,21 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
     layout: {
       columns: 2,
       sidebar: 'right',
-      sidebarWidth: '35%',
+      sidebarWidth: '32%',  // 调整宽度
       headerAlign: 'left',
       sectionHeadingStyle: 'pill',
       bulletStyle: 'dot'
     },
-    spacing: { section: 16, item: 8 },
+    spacing: { section: 18, item: 10 },
     letter: { marginTop: 40, marginSides: 50, signatureGap: 30 }
   },
 
   'lt-moderncv': {
-    fontFamily: '"Linux Libertine", serif',
-    fontSize: { body: 11, heading: 15, small: 9 },
-    lineHeight: 1.5,
+    fontFamily: 'Georgia, serif',
+    fontSize: { body: 14, heading: 19, small: 12 },  // 大幅增大字体
+    lineHeight: 1.6,
     palette: {
-      primary: '#0e77b6',
+      primary: '#2c5f8d',  // 深蓝色
       text: '#2c3e50',
       muted: '#95a5a6',
       bg: '#ffffff',
@@ -526,20 +526,20 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
       columns: 1,
       sidebar: null,
       sidebarWidth: null,
-      headerAlign: 'center',
-      sectionHeadingStyle: 'rule',
+      headerAlign: 'left',  // 改为左对齐
+      sectionHeadingStyle: 'bar',  // 改为bar样式
       bulletStyle: 'dot'
     },
-    spacing: { section: 20, item: 10 },
+    spacing: { section: 22, item: 12 },
     letter: { marginTop: 50, marginSides: 60, signatureGap: 40 }
   },
 
   'lt-friggeri': {
     fontFamily: '"Raleway", sans-serif',
-    fontSize: { body: 10, heading: 14, small: 8 },
-    lineHeight: 1.4,
+    fontSize: { body: 13, heading: 17, small: 11 },  // 增大字体
+    lineHeight: 1.5,
     palette: {
-      primary: '#6a737d',
+      primary: '#708090',  // Slate gray - 更深的灰色
       text: '#2c3e50',
       muted: '#95a5a6',
       bg: '#ffffff',
@@ -548,21 +548,21 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
     layout: {
       columns: 2,
       sidebar: 'left',
-      sidebarWidth: '33%',
+      sidebarWidth: '32%',
       headerAlign: 'left',
       sectionHeadingStyle: 'caps',
       bulletStyle: 'dot'
     },
-    spacing: { section: 18, item: 9 },
+    spacing: { section: 18, item: 10 },
     letter: { marginTop: 42, marginSides: 52, signatureGap: 32 }
   },
 
   'lt-deedy': {
     fontFamily: '"Ubuntu", sans-serif',
-    fontSize: { body: 11, heading: 16, small: 9 },
-    lineHeight: 1.4,
+    fontSize: { body: 13, heading: 18, small: 11 },  // 增大字体
+    lineHeight: 1.5,
     palette: {
-      primary: '#d14348',
+      primary: '#c0504d',  // 深橙红色（像CVWizard的Vertical）
       text: '#2c3e50',
       muted: '#7f8c8d',
       bg: '#ffffff',
@@ -571,21 +571,21 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
     layout: {
       columns: 2,
       sidebar: 'right',
-      sidebarWidth: '30%',
+      sidebarWidth: '32%',
       headerAlign: 'left',
       sectionHeadingStyle: 'bar',
       bulletStyle: 'dot'
     },
-    spacing: { section: 16, item: 8 },
+    spacing: { section: 18, item: 10 },
     letter: { marginTop: 40, marginSides: 50, signatureGap: 30 }
   },
 
   'lt-twenty': {
     fontFamily: '"Raleway", sans-serif',
-    fontSize: { body: 10, heading: 13, small: 8 },
-    lineHeight: 1.3,
+    fontSize: { body: 13, heading: 17, small: 11 },  // 增大字体
+    lineHeight: 1.5,
     palette: {
-      primary: '#fb5b5a',
+      primary: '#e74c3c',  // 更鲜艳的红色
       text: '#2c3e50',
       muted: '#95a5a6',
       bg: '#ffffff',
@@ -594,12 +594,12 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
     layout: {
       columns: 2,
       sidebar: 'left',
-      sidebarWidth: '25%',
+      sidebarWidth: '30%',  // 增大到30%
       headerAlign: 'left',
       sectionHeadingStyle: 'pill',
       bulletStyle: 'dot'
     },
-    spacing: { section: 14, item: 7 },
+    spacing: { section: 18, item: 10 },
     letter: { marginTop: 36, marginSides: 46, signatureGap: 26 }
   },
 
@@ -693,5 +693,75 @@ export const TEMPLATE_TOKENS: Record<string, TemplateTokens> = {
     },
     spacing: { section: 20, item: 12 },
     letter: { marginTop: 50, marginSides: 65, signatureGap: 45 }
+  },
+
+  // CVWizard-inspired templates
+  'cw-classic': {
+    fontFamily: 'Arial, sans-serif',
+    fontSize: { body: 13, heading: 17, small: 11 },
+    lineHeight: 1.6,
+    palette: {
+      primary: '#7f8c8d',  // Medium gray
+      text: '#2c3e50',
+      muted: '#95a5a6',
+      bg: '#ffffff',
+      border: '#ecf0f1'
+    },
+    layout: {
+      columns: 2,
+      sidebar: 'left',
+      sidebarWidth: '32%',
+      headerAlign: 'left',
+      sectionHeadingStyle: 'caps',
+      bulletStyle: 'dot'
+    },
+    spacing: { section: 18, item: 10 },
+    letter: { marginTop: 40, marginSides: 50, signatureGap: 30 }
+  },
+
+  'cw-horizontal': {
+    fontFamily: 'Arial, sans-serif',
+    fontSize: { body: 14, heading: 19, small: 12 },
+    lineHeight: 1.6,
+    palette: {
+      primary: '#3498db',  // Blue for top/bottom bars
+      text: '#2c3e50',
+      muted: '#7f8c8d',
+      bg: '#ffffff',
+      border: '#3498db'
+    },
+    layout: {
+      columns: 1,
+      sidebar: null,
+      sidebarWidth: null,
+      headerAlign: 'left',
+      sectionHeadingStyle: 'bar',
+      bulletStyle: 'dot'
+    },
+    spacing: { section: 20, item: 12 },
+    letter: { marginTop: 40, marginSides: 50, signatureGap: 30 }
+  },
+
+  'cw-vertical': {
+    fontFamily: 'Arial, sans-serif',
+    fontSize: { body: 13, heading: 18, small: 11 },
+    lineHeight: 1.6,
+    palette: {
+      primary: '#e74c3c',  // Red for gradient sidebar
+      text: '#2c3e50',
+      muted: '#7f8c8d',
+      bg: '#ffffff',
+      border: '#e74c3c'
+    },
+    layout: {
+      columns: 2,            // Changed to 2 columns
+      sidebar: 'left',       // Left sidebar
+      sidebarWidth: '30%',   // 30% sidebar width
+      headerAlign: 'left',
+      sectionHeadingStyle: 'bar',
+      bulletStyle: 'dot'
+    },
+    spacing: { section: 18, item: 10 },
+    letter: { marginTop: 40, marginSides: 50, signatureGap: 30 }
   }
 };

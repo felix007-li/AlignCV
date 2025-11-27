@@ -39,23 +39,30 @@ export interface Template {
  */
 export function tokensToCssVars(t: TemplateTokens): Record<string, string> {
   return {
+    // Typography
     '--font-family': t.fontFamily,
-    '--fs-body': t.fontSize.body + 'px',
-    '--fs-heading': t.fontSize.heading + 'px',
-    '--fs-small': t.fontSize.small + 'px',
-    '--lh': String(t.lineHeight),
+    '--font-size-body': t.fontSize.body + 'px',
+    '--font-size-heading': t.fontSize.heading + 'px',
+    '--font-size-small': t.fontSize.small + 'px',
+    '--line-height': String(t.lineHeight),
+
+    // Colors
     '--color-primary': t.palette.primary,
     '--color-text': t.palette.text,
     '--color-muted': t.palette.muted,
     '--color-bg': t.palette.bg,
     '--color-border': t.palette.border,
-    '--columns': String(t.layout.columns),
-    '--sidebar': String(t.layout.sidebar || ''),
-    '--sidebar-width': t.layout.sidebarWidth || '',
+
+    // Layout
+    '--layout-columns': String(t.layout.columns),
+    '--sidebar-position': t.layout.sidebar || 'none',
+    '--sidebar-width': t.layout.sidebarWidth || '0',
     '--header-align': t.layout.headerAlign,
-    '--heading-style': t.layout.sectionHeadingStyle,
+    '--section-heading-style': t.layout.sectionHeadingStyle,
     '--bullet-style': t.layout.bulletStyle,
-    '--space-section': t.spacing.section + 'px',
-    '--space-item': t.spacing.item + 'px'
+
+    // Spacing
+    '--spacing-section': t.spacing.section + 'px',
+    '--spacing-item': t.spacing.item + 'px'
   };
 }

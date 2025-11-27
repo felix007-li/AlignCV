@@ -1,9 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="160" viewBox="0 0 240 160">
-  <rect x="0" y="0" width="240" height="160" fill="#ffffff" stroke="#e5e7eb"/>
-  <rect x="0" y="0" width="240" height="22" fill="#7c3aed"/>
-  <rect x="12" y="32" width="200" height="12" fill="#111827" opacity="0.8" rx="2"/>
-  <rect x="12" y="50" width="180.0" height="8" fill="#111827" opacity="0.5" rx="2"/>
-  <rect x="12" y="62" width="190.0" height="8" fill="#111827" opacity="0.3" rx="2"/>
-
-  <text x="12" y="150" font-family="Inter, Arial" font-size="10" fill="#6b7280">moderncv (LX)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="210" height="297" viewBox="0 0 210 297">
+  <!-- Paper background -->
+  <rect width="210" height="297" fill="#ffffff"/>
+  
+  <!-- Header bar -->
+  <rect x="0" y="0" width="210" height="35" fill="#2c5f8d"/>
+  <text x="15" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">LI LI</text>
+  <text x="15" y="30" font-family="Arial, sans-serif" font-size="6" fill="#ffffff" opacity="0.9">Web Developer</text>
+  
+  <!-- Contact info -->
+  <text x="15" y="50" font-family="Arial, sans-serif" font-size="5" fill="#666">email@mail.com • (438) 928-3288 • Montreal</text>
+  
+  <!-- Profile section -->
+  <text x="15" y="70" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#2c5f8d">PROFILE</text>
+  <rect x="15" y="73" width="180" height="2" fill="#2c5f8d" opacity="0.5"/>
+  <text x="15" y="83" font-family="Arial, sans-serif" font-size="5" fill="#333">Eight years experience in web programming.</text>
+  <text x="15" y="90" font-family="Arial, sans-serif" font-size="5" fill="#333">Proficiency with Angular, React.js, Vue.js...</text>
+  
+  <!-- Experience section -->
+  <text x="15" y="110" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#2c5f8d">EXPERIENCE</text>
+  <rect x="15" y="113" width="180" height="2" fill="#2c5f8d" opacity="0.5"/>
+  <text x="15" y="123" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="#333">Web Developer</text>
+  <text x="160" y="123" font-family="Arial, sans-serif" font-size="5" fill="#666">2020 - Present</text>
+  <text x="15" y="130" font-family="Arial, sans-serif" font-size="5" fill="#666">Freelance</text>
+  
+  <!-- Skills section -->
+  <text x="15" y="155" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#2c5f8d">SKILLS</text>
+  <rect x="15" y="158" width="180" height="2" fill="#2c5f8d" opacity="0.5"/>
+  <text x="15" y="168" font-family="Arial, sans-serif" font-size="5" fill="#333">Angular • React.js • Vue.js • TypeScript • GraphQL</text>
+  
+  <!-- Footer -->
+  <text x="105" y="290" font-family="Arial, sans-serif" font-size="5" fill="#999" text-anchor="middle">ModernCV</text>
 </svg>
