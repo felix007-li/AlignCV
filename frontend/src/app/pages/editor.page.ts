@@ -53,15 +53,15 @@ import { StylePanelComponent } from '../ui/style-panel/style-panel.component';
 
         <!-- Right Preview Panel -->
         <section class="flex-1 flex flex-col bg-gray-100 border-r border-gray-200">
-          <!-- Preview Pane -->
-          <div class="flex-1 p-6 overflow-y-auto">
+          <!-- Preview Pane - scrollable area -->
+          <div class="flex-1 overflow-y-auto pt-6 px-6 pb-6">
             <div class="flex items-start justify-center min-h-full">
               <app-preview-pane></app-preview-pane>
             </div>
           </div>
 
-          <!-- Style Panel at bottom - Always Visible -->
-          <div class="flex-shrink-0 p-4 bg-white border-t-4 border-blue-500 shadow-xl sticky bottom-0 z-10 ">
+          <!-- Style Panel at bottom - Sticky, Always Visible -->
+          <div class="sticky bottom-0 px-4 py-3 bg-white border-t border-gray-200 z-10">
             <app-style-panel></app-style-panel>
           </div>
         </section>

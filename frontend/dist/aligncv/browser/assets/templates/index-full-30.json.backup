@@ -1,0 +1,418 @@
+[
+  {
+    "id": "jr-even",
+    "label": "Even (JR)",
+    "origin": "jsonresume-theme-even (MIT)",
+    "source_url": "https://github.com/rbardini/jsonresume-theme-even",
+    "style_tags": [
+      "flat",
+      "single-color",
+      "clean"
+    ],
+    "industry_tags": [
+      "software",
+      "general"
+    ]
+  },
+  {
+    "id": "jr-elegant",
+    "label": "Elegant (JR)",
+    "origin": "jsonresume-theme-elegant",
+    "source_url": "https://github.com/mudassir0909/jsonresume-theme-elegant",
+    "style_tags": [
+      "card",
+      "responsive"
+    ],
+    "industry_tags": [
+      "product",
+      "design"
+    ]
+  },
+  {
+    "id": "jr-flat",
+    "label": "Flat (JR)",
+    "origin": "jsonresume-theme-flat (MIT)",
+    "source_url": "https://www.npmjs.com/package/jsonresume-theme-flat",
+    "style_tags": [
+      "minimal",
+      "flat"
+    ],
+    "industry_tags": [
+      "software",
+      "student"
+    ]
+  },
+  {
+    "id": "jr-paper",
+    "label": "Paper (JR)",
+    "origin": "jsonresume-theme-paper (MIT)",
+    "source_url": "https://github.com/TimDaub/jsonresume-theme-paper",
+    "style_tags": [
+      "paper",
+      "rules"
+    ],
+    "industry_tags": [
+      "academia",
+      "engineering"
+    ]
+  },
+  {
+    "id": "jr-paperpp",
+    "label": "Paper++ (JR)",
+    "origin": "jsonresume-theme-paper-plus-plus (MIT)",
+    "source_url": "https://github.com/lindell/Paper-Plus-Plus",
+    "style_tags": [
+      "paper",
+      "responsive"
+    ],
+    "industry_tags": [
+      "general",
+      "software"
+    ]
+  },
+  {
+    "id": "jr-microdata",
+    "label": "Microdata (JR)",
+    "origin": "jsonresume-theme-microdata (MIT)",
+    "source_url": "https://github.com/scottnath/jsonresume-theme-microdata",
+    "style_tags": [
+      "seo",
+      "microdata"
+    ],
+    "industry_tags": [
+      "software",
+      "seo"
+    ]
+  },
+  {
+    "id": "jr-kendall",
+    "label": "Kendall (JR)",
+    "origin": "jsonresume-theme-kendall",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "two-column",
+      "sidebar"
+    ],
+    "industry_tags": [
+      "data",
+      "engineering"
+    ]
+  },
+  {
+    "id": "jr-classy",
+    "label": "Classy (JR)",
+    "origin": "jsonresume-theme-classy",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "classic",
+      "serif"
+    ],
+    "industry_tags": [
+      "marketing",
+      "management"
+    ]
+  },
+  {
+    "id": "jr-compact",
+    "label": "Compact (JR)",
+    "origin": "jsonresume-theme-compact",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "compact",
+      "single-page"
+    ],
+    "industry_tags": [
+      "student",
+      "software"
+    ]
+  },
+  {
+    "id": "jr-modern",
+    "label": "Modern (JR)",
+    "origin": "jsonresume-theme-modern (MIT)",
+    "source_url": "https://git.riotingpacifist.net/JuanCanham/jsonresume-theme-modern",
+    "style_tags": [
+      "modern",
+      "simple"
+    ],
+    "industry_tags": [
+      "software",
+      "product"
+    ]
+  },
+  {
+    "id": "jr-slick",
+    "label": "Slick (JR)",
+    "origin": "jsonresume-theme-slick",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "slick",
+      "typography"
+    ],
+    "industry_tags": [
+      "design",
+      "marketing"
+    ]
+  },
+  {
+    "id": "jr-timeline",
+    "label": "Timeline (JR)",
+    "origin": "jsonresume-theme-timeline-fixed",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "timeline",
+      "sections"
+    ],
+    "industry_tags": [
+      "project",
+      "consulting"
+    ]
+  },
+  {
+    "id": "jr-techlead",
+    "label": "TechLead (JR)",
+    "origin": "jsonresume-theme-techlead",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "bold",
+      "two-column"
+    ],
+    "industry_tags": [
+      "software",
+      "leadership"
+    ]
+  },
+  {
+    "id": "jr-onepage",
+    "label": "OnePage (JR)",
+    "origin": "jsonresume-theme-onepage",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "one-page",
+      "ATS"
+    ],
+    "industry_tags": [
+      "student",
+      "general"
+    ]
+  },
+  {
+    "id": "jr-standard",
+    "label": "Standard Resume (JR)",
+    "origin": "jsonresume-theme-standard-resume",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "standard",
+      "classic"
+    ],
+    "industry_tags": [
+      "general"
+    ]
+  },
+  {
+    "id": "jr-hired",
+    "label": "Hired (JR)",
+    "origin": "jsonresume-theme-hired",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "panel",
+      "badges"
+    ],
+    "industry_tags": [
+      "sales",
+      "marketing"
+    ]
+  },
+  {
+    "id": "jr-cvstrap",
+    "label": "CVStrap (JR)",
+    "origin": "jsonresume-theme-cvstrap",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "bootstrap",
+      "two-column"
+    ],
+    "industry_tags": [
+      "general"
+    ]
+  },
+  {
+    "id": "jr-tachyons",
+    "label": "Tachyons Clean (JR)",
+    "origin": "jsonresume-theme-tachyons-clean",
+    "source_url": "https://gist.github.com/asbjornu/7873be2713fcacc911be2035a482091d",
+    "style_tags": [
+      "utility-css",
+      "clean"
+    ],
+    "industry_tags": [
+      "software"
+    ]
+  },
+  {
+    "id": "jr-stackoverflowed",
+    "label": "StackOverflowed (JR)",
+    "origin": "jsonresume-theme-stackoverflowed (MIT)",
+    "source_url": "https://classic.yarnpkg.com/en/package/jsonresume-theme-stackoverflowed",
+    "style_tags": [
+      "developer-story",
+      "cards"
+    ],
+    "industry_tags": [
+      "software"
+    ]
+  },
+  {
+    "id": "jr-dev-ats",
+    "label": "Dev ATS (JR)",
+    "origin": "jsonresume-theme-dev-ats",
+    "source_url": "https://github.com/asqrzk/jsonresume-theme-dev-ats",
+    "style_tags": [
+      "ATS",
+      "developer"
+    ],
+    "industry_tags": [
+      "software",
+      "data"
+    ]
+  },
+  {
+    "id": "lt-awesomecv",
+    "label": "Awesome‑CV (LX)",
+    "origin": "Awesome-CV (LPPL 1.3c)",
+    "source_url": "https://github.com/posquit0/Awesome-CV",
+    "style_tags": [
+      "two-column",
+      "accent-left"
+    ],
+    "industry_tags": [
+      "general",
+      "engineering"
+    ]
+  },
+  {
+    "id": "lt-altacv",
+    "label": "AltaCV (LX)",
+    "origin": "AltaCV (LPPL 1.3c)",
+    "source_url": "https://www.overleaf.com/latex/templates/altacv-template/trgqjpwnmtgv",
+    "style_tags": [
+      "two-column",
+      "pill-headings"
+    ],
+    "industry_tags": [
+      "software",
+      "design"
+    ]
+  },
+  {
+    "id": "lt-moderncv",
+    "label": "moderncv (LX)",
+    "origin": "moderncv (LPPL 1.3c)",
+    "source_url": "https://ctan.org/tex-archive/macros/latex/contrib/moderncv?lang=en",
+    "style_tags": [
+      "classic",
+      "header-block"
+    ],
+    "industry_tags": [
+      "general",
+      "academia"
+    ]
+  },
+  {
+    "id": "lt-friggeri",
+    "label": "Friggeri (LX)",
+    "origin": "Friggeri CV (MIT/CC-BY variants)",
+    "source_url": "https://www.overleaf.com/latex/templates/friggeri-cv-template/hmnchbfmjgqh",
+    "style_tags": [
+      "two-column",
+      "color-sections"
+    ],
+    "industry_tags": [
+      "research",
+      "data"
+    ]
+  },
+  {
+    "id": "lt-deedy",
+    "label": "Deedy (LX)",
+    "origin": "Deedy Resume (mixed licenses)",
+    "source_url": "https://github.com/deedy/Deedy-Resume",
+    "style_tags": [
+      "two-column",
+      "high-contrast"
+    ],
+    "industry_tags": [
+      "software",
+      "student"
+    ]
+  },
+  {
+    "id": "lt-twenty",
+    "label": "Twenty Seconds (LX)",
+    "origin": "Twenty Seconds CV (MIT/LPPL variants)",
+    "source_url": "https://www.overleaf.com/latex/templates/twenty-seconds-curriculum-vitae/kfgsngtymkfj",
+    "style_tags": [
+      "one-page",
+      "timeline"
+    ],
+    "industry_tags": [
+      "marketing",
+      "product"
+    ]
+  },
+  {
+    "id": "lt-altacv-dark",
+    "label": "AltaCV Dark (LX)",
+    "origin": "AltaCV fork (LPPL 1.3c)",
+    "source_url": "https://www.overleaf.com/latex/templates/altacv-nicolasomar-fork/htfpmrwhbwpw",
+    "style_tags": [
+      "two-column",
+      "dark-mode"
+    ],
+    "industry_tags": [
+      "design",
+      "software"
+    ]
+  },
+  {
+    "id": "lt-moderncv-casual",
+    "label": "moderncv Casual (LX)",
+    "origin": "moderncv (LPPL 1.3c)",
+    "source_url": "https://www.overleaf.com/latex/templates/moderncv-and-cover-letter-template/sttkgjcysttn",
+    "style_tags": [
+      "casual",
+      "rule-headings"
+    ],
+    "industry_tags": [
+      "general",
+      "ops"
+    ]
+  },
+  {
+    "id": "lt-friggeri-boosted",
+    "label": "Friggeri Boosted (LX)",
+    "origin": "Friggeri forks (varied)",
+    "source_url": "https://github.com/Japhiolite/friggeri-cv-boosted",
+    "style_tags": [
+      "two-column",
+      "palette"
+    ],
+    "industry_tags": [
+      "data",
+      "research"
+    ]
+  },
+  {
+    "id": "lt-awesomecv-letter",
+    "label": "Awesome‑CV Letter (LX)",
+    "origin": "Awesome-CV letter (LPPL 1.3c)",
+    "source_url": "https://github.com/posquit0/Awesome-CV",
+    "style_tags": [
+      "letter",
+      "matching-style"
+    ],
+    "industry_tags": [
+      "general"
+    ]
+  }
+]

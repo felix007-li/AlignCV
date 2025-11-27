@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210" height="297" viewBox="0 0 210 297">
+  <defs>
+    <!-- Gradient for sidebar background -->
+    <linearGradient id="sidebarGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:0.15" />
+      <stop offset="50%" style="stop-color:#e74c3c;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#e74c3c;stop-opacity:0.03" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Paper background -->
+  <rect width="210" height="297" fill="#ffffff"/>
+  
+  <!-- Left red bar (18px) -->
+  <rect x="0" y="0" width="18" height="297" fill="#e74c3c"/>
+
+  <!-- Gradient sidebar (30% width = 63px, starting at x=18) -->
+  <rect x="18" y="0" width="63" height="297" fill="url(#sidebarGradient)"/>
+  
+  <!-- Sidebar content (dark text on gradient background) -->
+  <text x="28" y="55" font-family="Arial, sans-serif" font-size="5.5" font-weight="bold" fill="#e74c3c">PERSONAL DETAILS</text>
+  <line x1="28" y1="57" x2="75" y2="57" stroke="#e74c3c" stroke-width="1"/>
+  <text x="28" y="65" font-family="Arial, sans-serif" font-size="4" font-weight="bold" fill="#2c3e50">LI LI</text>
+  <text x="28" y="71" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">email@mail.com</text>
+  <text x="28" y="77" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">(438) 928-3288</text>
+  <text x="28" y="83" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">Montreal, QC</text>
+
+  <text x="28" y="101" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="#e74c3c">SKILLS</text>
+  <line x1="28" y1="103" x2="75" y2="103" stroke="#e74c3c" stroke-width="1"/>
+  <text x="28" y="111" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">• Angular</text>
+  <text x="28" y="117" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">• React.js</text>
+  <text x="28" y="123" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">• Vue.js</text>
+
+  <text x="28" y="141" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="#e74c3c">LANGUAGES</text>
+  <line x1="28" y1="143" x2="75" y2="143" stroke="#e74c3c" stroke-width="1"/>
+  <text x="28" y="151" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">• English</text>
+  <text x="28" y="157" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">• French</text>
+  
+  <!-- Main content (starts higher since no header) -->
+  <text x="85" y="30" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="#e74c3c">PROFILE</text>
+  <rect x="85" y="35" width="115" height="2" fill="#7f8c8d" opacity="0.3"/>
+  <text x="85" y="46" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">Eight years experience in web</text>
+  <text x="85" y="52" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">programming. Proficiency with</text>
+  <text x="85" y="58" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">modern JavaScript frameworks...</text>
+
+  <text x="85" y="80" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="#e74c3c">EXPERIENCE</text>
+  <rect x="85" y="85" width="115" height="2" fill="#7f8c8d" opacity="0.3"/>
+  <text x="85" y="96" font-family="Arial, sans-serif" font-size="5" font-weight="bold" fill="#2c3e50">Web Developer</text>
+  <text x="85" y="102" font-family="Arial, sans-serif" font-size="4" fill="#7f8c8d">Freelance · 2020-Present</text>
+  <text x="85" y="110" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">Developed responsive web apps</text>
+  <text x="85" y="116" font-family="Arial, sans-serif" font-size="4" fill="#2c3e50">using Angular, React, Vue.js</text>
+  
+  <!-- Footer -->
+  <text x="105" y="290" font-family="Arial, sans-serif" font-size="5" fill="#999" text-anchor="middle">Vertical</text>
+</svg>

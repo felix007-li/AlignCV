@@ -53,7 +53,7 @@ import { Template } from '../../models/template.model';
     .template-scroll-container {
       overflow-x: auto;
       overflow-y: hidden;
-      padding: 1.5rem 1rem;
+      padding: 1.5rem 0.5rem;
       scrollbar-width: none; /* Firefox */
       -ms-overflow-style: none; /* IE/Edge */
     }
@@ -66,6 +66,13 @@ import { Template } from '../../models/template.model';
       display: flex;
       gap: 1rem;
       min-width: min-content;
+      padding: 0 0.5rem;
+    }
+
+    .template-list::after {
+      content: '';
+      flex-shrink: 0;
+      width: 1rem;
     }
 
     .template-card {
@@ -206,9 +213,23 @@ export class TemplateSelectorComponent implements OnInit, AfterViewInit {
     const el = this.scrollContainer.nativeElement;
     const scrollWidth = el.scrollWidth;
     const clientWidth = el.clientWidth;
+    const scrollLeft = el.scrollLeft;
 
     if (scrollWidth > clientWidth) {
-      this.scrollPercentage = (clientWidth / scrollWidth) * 100;
+      // Calculate thumb width as percentage of visible area
+      const thumbWidth = (clientWidth / scrollWidth) * 100;
+
+      // Calculate thumb position based on scroll position
+      const maxScroll = scrollWidth - clientWidth;
+      const scrollPercentage = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
+
+      this.scrollPercentage = thumbWidth;
+
+      // Update thumb position
+      const thumbElement = document.querySelector('.scrollbar-thumb') as HTMLElement;
+      if (thumbElement) {
+        thumbElement.style.marginLeft = `${scrollPercentage}%`;
+      }
     } else {
       this.scrollPercentage = 100;
     }

@@ -23,8 +23,8 @@ import { tokensToCssVars } from '../../models/template.model';
   selector: 'app-style-panel',
   imports: [CommonModule, FormsModule, TemplateSelectorComponent, ColorPickerComponent],
   template: `
-    <div class="w-full bg-white border border-gray-200 rounded-lg shadow-sm">
-      <div class="flex items-center gap-2 px-4 py-2.5">
+    <div class="w-full">
+      <div class="flex items-center gap-2">
         <!-- Templates Button -->
         <div class="flex items-center gap-1.5 relative">
           <button
@@ -181,6 +181,7 @@ export class StylePanelComponent implements OnInit {
 
   showColorPicker = false;
   currentColor: string = '#000000';
+  userSelectedColor: string | null = null; // Track user-selected color
 
   ngOnInit() {
     // Initialize current color from state if needed
@@ -209,9 +210,18 @@ export class StylePanelComponent implements OnInit {
 
   onColorSelected(color: string) {
     this.currentColor = color;
-    // You can dispatch to NGXS state here if you want to store custom colors
-    // For now, just apply the color directly
-    document.documentElement.style.setProperty('--primary-color', color);
+    this.userSelectedColor = color; // Save user selection
+
+    // Apply color to CSS variables (correct variable name)
+    document.documentElement.style.setProperty('--color-primary', color);
+
+    // ALSO apply to preview element (to ensure it works after template switch)
+    const previewElement = document.querySelector('.resume-preview');
+    if (previewElement) {
+      (previewElement as HTMLElement).style.setProperty('--color-primary', color);
+    }
+
+    console.log('Color picker selected:', color);
 
     // Analytics tracking
     (window as any).dataLayer = (window as any).dataLayer || [];
@@ -238,7 +248,8 @@ export class StylePanelComponent implements OnInit {
   onTemplateSelected(template: Template) {
     this.selectedTemplateId = template.metadata.id;
     this.selectedTemplateName = template.metadata.label;
-    this.showTemplateSelector = false;
+    // Keep selector open for easy comparison
+    // this.showTemplateSelector = false;
 
     // Apply template tokens to CSS variables
     this.applyTemplateTokens(template);
@@ -268,6 +279,25 @@ export class StylePanelComponent implements OnInit {
     Object.entries(cssVars).forEach(([key, value]) => {
       document.documentElement.style.setProperty(key, value);
     });
+
+    // Store template ID for special styling (e.g., cw-horizontal, cw-vertical)
+    document.documentElement.style.setProperty('--template-id', template.metadata.id);
+
+    // Re-apply user selected color if exists (to override template's default color)
+    if (this.userSelectedColor) {
+      setTimeout(() => {
+        // Apply to document root
+        document.documentElement.style.setProperty('--color-primary', this.userSelectedColor!);
+
+        // ALSO apply to preview element (critical for template switching!)
+        const previewElement = document.querySelector('.resume-preview');
+        if (previewElement) {
+          (previewElement as HTMLElement).style.setProperty('--color-primary', this.userSelectedColor!);
+        }
+
+        console.log('Re-applied user color after template switch:', this.userSelectedColor);
+      }, 100);
+    }
   }
 
   onTemplateChange(template: string) {
@@ -283,17 +313,40 @@ export class StylePanelComponent implements OnInit {
 
   onFontChange(font: string) {
     this.store.dispatch(new SetFont(font));
+    // Apply font to CSS variables
+    document.documentElement.style.setProperty('--font-family', font);
   }
 
   onFontSizeChange(size: number) {
     this.store.dispatch(new SetFontSize(size));
+    // Apply font size to CSS variables
+    document.documentElement.style.setProperty('--font-size-body', size + 'px');
+    // Also update heading size proportionally
+    const headingSize = Math.round(size * 1.35);
+    document.documentElement.style.setProperty('--font-size-heading', headingSize + 'px');
   }
 
   onLineHeightChange(lineHeight: number) {
     this.store.dispatch(new SetLineHeight(lineHeight));
+    // Apply line height to CSS variables
+    document.documentElement.style.setProperty('--line-height', String(lineHeight));
   }
 
   onPaletteChange(palette: PaletteKey) {
     this.store.dispatch(new SetPalette(palette));
+    // Apply palette color to CSS variables
+    this.updateColorFromPalette(palette);
+    const paletteColors: Record<PaletteKey, string> = {
+      blue: '#2563eb',
+      green: '#059669',
+      rose: '#e11d48',
+      purple: '#7c3aed',
+      orange: '#ea580c',
+      teal: '#0d9488',
+      indigo: '#4f46e5',
+      slate: '#475569'
+    };
+    const color = paletteColors[palette] || '#2563eb';
+    document.documentElement.style.setProperty('--color-primary', color);
   }
 }
