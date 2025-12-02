@@ -2,8 +2,14 @@
   <div class="nav__inner">
     <a class="brand" routerLink="/">AlignCV</a>
 
-    <nav class="nav__menu" (mouseleave)="close()">
-      <div *ngFor="let item of nav" class="menu-item" [class.has-children]="item.children">
+    <nav class="nav__menu">
+      <div
+        *ngFor="let item of nav"
+        class="menu-item"
+        [class.has-children]="item.children"
+        (mouseenter)="item.children ? toggle(item.label) : null"
+        (mouseleave)="item.children ? close() : null"
+      >
         <a
           *ngIf="!item.children"
           class="menu-link"
@@ -13,7 +19,6 @@
         <button
           *ngIf="item.children"
           class="menu-link with-caret"
-          (mouseenter)="toggle(item.label)"
           (focus)="toggle(item.label)"
           (click)="toggle(item.label)"
           [attr.aria-haspopup]="'menu'"

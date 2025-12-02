@@ -1,1 +1,10 @@
-import { Component } from '@angular/core'; import { RouterLink, RouterOutlet } from '@angular/router'; @Component({ selector:'app-root', standalone:true, imports:[RouterOutlet,RouterLink], template:`<header class='w-full border-b bg-white sticky top-0 z-10'><div class='max-w-full mx-auto px-4 py-3 flex items-center justify-between'><a routerLink='/' class='text-xl font-bold'>AlignCV</a><nav class='hidden md:flex gap-4 items-center'><a routerLink='/' class='hover:underline'>Home</a><div class='group relative'><a class='hover:underline'>Resume</a><div class='absolute hidden group-hover:block bg-white shadow rounded p-2 min-w-40'><a routerLink='/resume/templates' class='block px-3 py-1 hover:bg-gray-50'>Templates</a><a routerLink='/resume/examples' class='block px-3 py-1 hover:bg-gray-50'>Examples</a></div></div><div class='group relative'><a class='hover:underline'>Cover Letter</a><div class='absolute hidden group-hover:block bg-white shadow rounded p-2 min-w-40'><a routerLink='/cover-letter/templates' class='block px-3 py-1 hover:bg-gray-50'>Templates</a><a routerLink='/cover-letter/examples' class='block px-3 py-1 hover:bg-gray-50'>Examples</a></div></div><a routerLink='/pricing' class='hover:underline'>Pricing</a><a routerLink='/faq' class='hover:underline'>FAQ</a></nav><a routerLink='/app/home' class='px-3 py-1 rounded bg-black text-white'>Dashboard</a></div></header><main class='max-w-full mx-auto p-4'><router-outlet></router-outlet></main>` }) export class AppComponent {}
+import { Component } from '@angular/core'; 
+import { RouterLink, RouterOutlet } from '@angular/router'; 
+
+@Component({ selector:'app-root', standalone:true, imports:[RouterOutlet,RouterLink], template:`
+    <main class='max-w-full mx-auto p-4'>
+        <router-outlet></router-outlet>
+    </main>` 
+})
+
+export class AppComponent {}

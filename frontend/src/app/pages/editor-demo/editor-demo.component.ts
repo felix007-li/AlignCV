@@ -36,7 +36,7 @@ export class EditorDemoComponent implements OnInit {
   updateContent(sectionId: string, v: string) { this.store.dispatch(new UpdateSection(sectionId, { content: v })); }
   applySuggestion(sectionId: string, text: string) { this.store.dispatch(new ApplySuggestion(sectionId, text)); }
 
-  onSelectTemplate(id: string){ this.store.dispatch(new SetTemplate(id)); }
+  onSelectTemplate(id: string){ this.store.dispatch(new SetTemplate(id as any)); }
   onStyleChange(patch: any){ this.store.dispatch(new SetEditorStyleGlobal(patch)); }
 
   exportPdf(){ this.showPaywall = true; }

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#f3f4f6"/>
+
+  <!-- Browser window mockup -->
+  <rect x="50" y="30" width="1100" height="540" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+
+  <!-- Browser header -->
+  <rect x="50" y="30" width="1100" height="40" rx="8" fill="#f9fafb"/>
+  <circle cx="70" cy="50" r="6" fill="#ef4444"/>
+  <circle cx="90" cy="50" r="6" fill="#fbbf24"/>
+  <circle cx="110" cy="50" r="6" fill="#10b981"/>
+
+  <!-- URL bar -->
+  <rect x="140" y="42" width="600" height="16" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1"/>
+  <text x="150" y="54" font-family="Arial, sans-serif" font-size="10" fill="#9ca3af">localhost:4200/app/resume/new/editor</text>
+
+  <!-- Template selector modal -->
+  <rect x="150" y="100" width="900" height="420" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+
+  <!-- Modal title -->
+  <text x="180" y="140" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#111827">Choose a Template</text>
+
+  <!-- Template grid -->
+  <!-- Template 1 - Classic -->
+  <g>
+    <rect x="180" y="170" width="250" height="320" rx="6" fill="#f9fafb" stroke="#2563eb" stroke-width="3"/>
+    <rect x="190" y="180" width="230" height="300" rx="4" fill="#ffffff"/>
+    <rect x="190" y="180" width="230" height="30" fill="#2563eb"/>
+    <text x="200" y="202" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold">Classic</text>
+
+    <!-- Mini resume preview -->
+    <line x1="200" y1="225" x2="410" y2="225" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="200" y1="245" x2="350" y2="245" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="200" y1="265" x2="380" y2="265" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="280" y="470" font-family="Arial, sans-serif" font-size="10" fill="#2563eb" font-weight="bold">Selected ✓</text>
+  </g>
+
+  <!-- Template 2 - Vertical -->
+  <g>
+    <rect x="450" y="170" width="250" height="320" rx="6" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/>
+    <rect x="460" y="180" width="230" height="300" rx="4" fill="#ffffff"/>
+    <rect x="460" y="180" width="12" height="300" fill="#dc2626"/>
+    <rect x="472" y="180" width="80" height="300" fill="#fecaca" opacity="0.2"/>
+    <text x="200" y="202" font-family="Arial, sans-serif" font-size="12" fill="#111827" font-weight="bold">Vertical</text>
+
+    <line x1="565" y1="200" x2="670" y2="200" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="565" y1="220" x2="650" y2="220" stroke="#e5e7eb" stroke-width="1"/>
+  </g>
+
+  <!-- Template 3 - Modern -->
+  <g>
+    <rect x="720" y="170" width="250" height="320" rx="6" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/>
+    <rect x="730" y="180" width="230" height="300" rx="4" fill="#ffffff"/>
+    <rect x="730" y="180" width="230" height="40" fill="#3b82f6"/>
+    <rect x="730" y="460" width="230" height="20" fill="#3b82f6"/>
+    <text x="780" y="205" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold">Horizontal</text>
+
+    <line x1="740" y1="240" x2="950" y2="240" stroke="#e5e7eb" stroke-width="1"/>
+    <line x1="740" y1="260" x2="890" y2="260" stroke="#e5e7eb" stroke-width="1"/>
+  </g>
+
+  <!-- Highlight indicator -->
+  <text x="600" y="60" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2563eb">Step 2: Select Template</text>
+  <text x="600" y="85" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Choose a design that matches your style</text>
+
+  <!-- Cursor pointing at template -->
+  <path d="M 305 290 L 305 280 L 315 290 Z" fill="#2563eb"/>
+</svg>

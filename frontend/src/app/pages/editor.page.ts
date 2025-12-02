@@ -10,7 +10,7 @@ import { StylePanelComponent } from '../ui/style-panel/style-panel.component';
   imports: [CommonModule, LeftEditorComponent, PreviewPaneComponent, StylePanelComponent],
   selector: 'editor-page',
   template: `
-    <div class="flex flex-col h-screen bg-gray-50 w-full">
+    <div class="flex flex-col h-screen bg-gray-50 w-full overflow-hidden">
       <!-- Header / Navigation Bar -->
       <header class="flex-shrink-0 bg-white border-b border-gray-200 shadow-sm">
         <div class="flex items-center justify-between px-6 py-3">
@@ -45,25 +45,25 @@ import { StylePanelComponent } from '../ui/style-panel/style-panel.component';
       </header>
 
       <!-- Main Editor Layout (Full Height) -->
-      <div class="flex-1 flex overflow-hidden">
+      <div class="flex-1 flex overflow-hidden min-h-0">
         <!-- Left Editor Panel -->
         <aside class="w-6/12 flex-shrink-0 bg-white border-r border-gray-200 p-6 overflow-y-auto">
           <app-left-editor></app-left-editor>
         </aside>
 
         <!-- Right Preview Panel -->
-        <section class="flex-1 flex flex-col bg-gray-100 border-r border-gray-200">
+        <section class="flex-1 flex flex-col bg-gray-100 border-r border-gray-200 overflow-hidden min-h-0">
           <!-- Preview Pane - scrollable area -->
-          <div class="flex-1 overflow-y-auto pt-6 px-6 pb-6">
+          <div class="flex-1 overflow-y-auto pt-6 px-6 pb-2 min-h-0">
             <div class="flex items-start justify-center min-h-full">
               <app-preview-pane></app-preview-pane>
+              </div>
+            <!-- Style Panel at bottom - Sticky, Always Visible -->
+            <div class="sticky bottom-0 px-4 py-4 border-gray-200 z-10">
+              <app-style-panel></app-style-panel>
             </div>
           </div>
 
-          <!-- Style Panel at bottom - Sticky, Always Visible -->
-          <div class="sticky bottom-0 px-4 py-3 bg-white border-t border-gray-200 z-10">
-            <app-style-panel></app-style-panel>
-          </div>
         </section>
       </div>
     </div>

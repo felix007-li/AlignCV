@@ -58,7 +58,7 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
 }
 
 /* Resume canvas styles */
@@ -92,4 +92,11 @@ html, body {
 
 .palette-rose {
   --color-accent: #e11d48;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }

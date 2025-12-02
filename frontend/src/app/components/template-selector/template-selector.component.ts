@@ -43,17 +43,24 @@ import { Template } from '../../models/template.model';
     </div>
   `,
   styles: [`
+    :host {
+      display: block;
+      width: 100%;
+    }
+
     .template-selector {
       background: white;
       border-radius: 8px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
       overflow: hidden;
+      width: 100%;
+      max-width: 100%;
     }
 
     .template-scroll-container {
       overflow-x: auto;
       overflow-y: hidden;
-      padding: 1.5rem 0.5rem;
+      padding: 1.25rem 0.75rem;
       scrollbar-width: none; /* Firefox */
       -ms-overflow-style: none; /* IE/Edge */
     }
@@ -63,16 +70,12 @@ import { Template } from '../../models/template.model';
     }
 
     .template-list {
-      display: flex;
-      gap: 1rem;
-      min-width: min-content;
-      padding: 0 0.5rem;
-    }
-
-    .template-list::after {
-      content: '';
-      flex-shrink: 0;
-      width: 1rem;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(140px, 1fr);
+      gap: 0.5rem;
+      min-width: 100%;
+      padding: 0 0.25rem;
     }
 
     .template-card {
@@ -83,7 +86,7 @@ import { Template } from '../../models/template.model';
       transition: all 0.2s ease;
       background: white;
       flex-shrink: 0;
-      width: 140px;
+      width: 150px;
     }
 
     .template-card:hover {
@@ -100,7 +103,7 @@ import { Template } from '../../models/template.model';
     .thumbnail-wrapper {
       position: relative;
       width: 100%;
-      height: 200px;
+      height: 190px;
       background: #f9fafb;
       overflow: hidden;
     }
@@ -108,7 +111,7 @@ import { Template } from '../../models/template.model';
     .thumbnail {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
 

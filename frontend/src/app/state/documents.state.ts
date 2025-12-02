@@ -48,7 +48,7 @@ export class DocumentsState {
   }
   @Action(TouchRecent) touchRecent(ctx: StateContext<DocumentsStateModel>, { id }: TouchRecent) {
     const s = ctx.getState();
-    const arr = [id, *s.recentIds.filter(x => x != id)];
+    const arr = [id, ...s.recentIds.filter(x => x !== id)];
     ctx.patchState({ recentIds: arr });
   }
 }

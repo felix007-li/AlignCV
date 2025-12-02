@@ -12,7 +12,7 @@ import { Template } from '../models/template.model';
     <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <!-- Header -->
       <header class="bg-white shadow-sm border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="max-w-screen-2xl w-full mx-auto px-6 lg:px-10 py-6">
           <div class="flex items-center justify-between">
             <div>
               <h1 class="text-3xl font-bold text-gray-900">Resume Templates</h1>
@@ -29,8 +29,8 @@ import { Template } from '../models/template.model';
       </header>
 
       <!-- Templates Grid -->
-      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <main class="max-w-screen-2xl w-full mx-auto px-6 lg:px-10 py-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           <div
             *ngFor="let template of templates"
             class="template-card group cursor-pointer"
@@ -112,12 +112,19 @@ import { Template } from '../models/template.model';
       aspect-ratio: 210 / 297;
       background: #f8f9fa;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px; /* avoid template edges being cropped */
     }
 
     .thumbnail-image {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain; /* keep sidebar within frame */
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
       transition: transform 0.3s ease;
     }
 

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#f3f4f6"/>
+
+  <!-- Browser window mockup -->
+  <rect x="50" y="30" width="1100" height="540" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+
+  <!-- Browser header -->
+  <rect x="50" y="30" width="1100" height="40" rx="8" fill="#f9fafb"/>
+  <circle cx="70" cy="50" r="6" fill="#ef4444"/>
+  <circle cx="90" cy="50" r="6" fill="#fbbf24"/>
+  <circle cx="110" cy="50" r="6" fill="#10b981"/>
+
+  <!-- URL bar -->
+  <rect x="140" y="42" width="600" height="16" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1"/>
+  <text x="150" y="54" font-family="Arial, sans-serif" font-size="10" fill="#9ca3af">localhost:4200/app/resume/new/editor</text>
+
+  <!-- Left panel - Form -->
+  <rect x="70" y="90" width="400" height="450" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Form title -->
+  <text x="90" y="120" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#111827">Personal Details</text>
+
+  <!-- Form fields -->
+  <rect x="90" y="140" width="360" height="30" rx="4" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/>
+  <text x="100" y="160" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">First Name</text>
+
+  <rect x="90" y="180" width="360" height="30" rx="4" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/>
+  <text x="100" y="200" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Last Name</text>
+
+  <rect x="90" y="220" width="360" height="30" rx="4" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/>
+  <text x="100" y="240" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Email Address</text>
+
+  <rect x="90" y="260" width="360" height="30" rx="4" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/>
+  <text x="100" y="280" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Phone Number</text>
+
+  <rect x="90" y="300" width="360" height="30" rx="4" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/>
+  <text x="100" y="320" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">City</text>
+
+  <!-- Section: Profile -->
+  <text x="90" y="370" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#111827">Profile</text>
+
+  <rect x="90" y="390" width="360" height="80" rx="4" fill="#f9fafb" stroke="#d1d5db" stroke-width="1"/>
+  <text x="100" y="410" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Professional summary...</text>
+
+  <!-- Cursor icon on form -->
+  <path d="M 250 165 L 250 155 L 260 165 Z" fill="#2563eb"/>
+
+  <!-- Right panel - Preview -->
+  <rect x="490" y="90" width="640" height="450" fill="#e5e7eb"/>
+
+  <!-- Resume preview placeholder -->
+  <rect x="560" y="110" width="500" height="660" transform="scale(0.6) translate(370, -30)" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+
+  <!-- Mini resume preview content -->
+  <rect x="560" y="110" width="24" height="660" transform="scale(0.6) translate(370, -30)" fill="#dc2626"/>
+  <rect x="584" y="110" width="80" height="660" transform="scale(0.6) translate(370, -30)" fill="#fecaca" opacity="0.3"/>
+
+  <text x="600" y="150" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#111827" transform="scale(0.6) translate(370, -30)">Name</text>
+  <text x="600" y="170" font-family="Arial, sans-serif" font-size="10" fill="#6b7280" transform="scale(0.6) translate(370, -30)">Email | Phone | City</text>
+
+  <!-- Highlight indicator -->
+  <text x="600" y="60" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2563eb">Step 1: Enter Details</text>
+  <text x="600" y="85" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Fill in your personal information</text>
+</svg>

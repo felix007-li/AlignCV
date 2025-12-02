@@ -1,0 +1,1 @@
+{"version":3,"file":"price.client.js","sourceRoot":"","sources":["../../../../../src/app/core/services/price.client.ts"],"names":[],"mappings":"AAAA,MAAM,OAAO,WAAW;IACtB,KAAK,CAAC,GAAG,CAAC,OAAY;QACpB,OAAO,EAAE,OAAO,EAAE,EAAE,EAAE,MAAM,EAAE,EAAE,EAAE,OAAO,EAAE,EAAE,EAAE,CAAC;IAClD,CAAC;CACF"}

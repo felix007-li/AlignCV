@@ -18,6 +18,7 @@ export interface PersonalDetails {
   address?: string;
   postCode?: string;
   city?: string;
+  websiteUrl?: string;
 }
 
 // Profile/Summary (single entry, no array)

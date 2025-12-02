@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 400 520">
+  <!-- Background -->
+  <rect width="400" height="520" fill="#ffffff"/>
+  <rect width="400" height="520" fill="#f9fafb"/>
+
+  <!-- Red sidebar -->
+  <rect x="0" y="0" width="12" height="520" fill="#dc2626"/>
+
+  <!-- Gradient sidebar -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:0.03" />
+    </linearGradient>
+  </defs>
+  <rect x="12" y="0" width="110" height="520" fill="url(#grad)"/>
+
+  <!-- Personal Details Section -->
+  <text x="25" y="40" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#dc2626">PERSONAL DETAILS</text>
+  <line x1="25" y1="45" x2="115" y2="45" stroke="#dc2626" stroke-width="2"/>
+
+  <text x="25" y="65" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#111827">Austin Clark</text>
+  <text x="25" y="80" font-family="Arial, sans-serif" font-size="8" fill="#374151">austin@email.com</text>
+  <text x="25" y="93" font-family="Arial, sans-serif" font-size="8" fill="#374151">(555) 123-4567</text>
+  <text x="25" y="106" font-family="Arial, sans-serif" font-size="8" fill="#374151">San Francisco, CA</text>
+
+  <!-- Skills Section -->
+  <text x="25" y="140" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#dc2626">SKILLS</text>
+  <line x1="25" y1="145" x2="115" y2="145" stroke="#dc2626" stroke-width="2"/>
+
+  <text x="25" y="162" font-family="Arial, sans-serif" font-size="8" fill="#374151">• JavaScript</text>
+  <text x="25" y="175" font-family="Arial, sans-serif" font-size="8" fill="#374151">• TypeScript</text>
+  <text x="25" y="188" font-family="Arial, sans-serif" font-size="8" fill="#374151">• Angular</text>
+  <text x="25" y="201" font-family="Arial, sans-serif" font-size="8" fill="#374151">• React</text>
+
+  <!-- Languages Section -->
+  <text x="25" y="235" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#dc2626">LANGUAGES</text>
+  <line x1="25" y1="240" x2="115" y2="240" stroke="#dc2626" stroke-width="2"/>
+
+  <text x="25" y="257" font-family="Arial, sans-serif" font-size="8" fill="#374151">• English (Native)</text>
+  <text x="25" y="270" font-family="Arial, sans-serif" font-size="8" fill="#374151">• Spanish (Fluent)</text>
+
+  <!-- Main Content Area -->
+  <!-- Profile Section -->
+  <text x="140" y="40" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#dc2626">PROFILE</text>
+  <rect x="140" y="45" width="240" height="2" fill="#d1d5db"/>
+
+  <text x="140" y="65" font-family="Arial, sans-serif" font-size="8" fill="#4b5563">Experienced web developer with 8+ years of</text>
+  <text x="140" y="77" font-family="Arial, sans-serif" font-size="8" fill="#4b5563">expertise in modern JavaScript frameworks.</text>
+  <text x="140" y="89" font-family="Arial, sans-serif" font-size="8" fill="#4b5563">Passionate about creating performant and</text>
+  <text x="140" y="101" font-family="Arial, sans-serif" font-size="8" fill="#4b5563">accessible web applications.</text>
+
+  <!-- Experience Section -->
+  <text x="140" y="135" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#dc2626">EXPERIENCE</text>
+  <rect x="140" y="140" width="240" height="2" fill="#d1d5db"/>
+
+  <text x="140" y="160" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#111827">Senior Web Developer</text>
+  <text x="140" y="172" font-family="Arial, sans-serif" font-size="8" fill="#6b7280">Tech Company · 2020 - Present</text>
+  <text x="140" y="187" font-family="Arial, sans-serif" font-size="7" fill="#4b5563">• Led development of customer-facing web applications</text>
+  <text x="140" y="197" font-family="Arial, sans-serif" font-size="7" fill="#4b5563">• Improved application performance by 40%</text>
+
+  <text x="140" y="220" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#111827">Web Developer</text>
+  <text x="140" y="232" font-family="Arial, sans-serif" font-size="8" fill="#6b7280">Digital Agency · 2018 - 2020</text>
+  <text x="140" y="247" font-family="Arial, sans-serif" font-size="7" fill="#4b5563">• Built responsive websites for various clients</text>
+  <text x="140" y="257" font-family="Arial, sans-serif" font-size="7" fill="#4b5563">• Collaborated with design team on UI/UX</text>
+
+  <!-- Education Section -->
+  <text x="140" y="290" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#dc2626">EDUCATION</text>
+  <rect x="140" y="295" width="240" height="2" fill="#d1d5db"/>
+
+  <text x="140" y="315" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#111827">BS in Computer Science</text>
+  <text x="140" y="327" font-family="Arial, sans-serif" font-size="8" fill="#6b7280">University of California · 2014 - 2018</text>
+
+  <!-- Shadow effect -->
+  <defs>
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.1"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+</svg>

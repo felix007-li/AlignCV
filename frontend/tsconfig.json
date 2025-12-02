@@ -21,9 +21,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "types": ["node"],
+    "typeRoots": ["./src/types", "./node_modules/@types"],
     "lib": [
       "es2022",
       "dom"
     ]
-  }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "exclude": ["server-*.ts", "src/app/app.server.module.ts"]
 }
