@@ -1,24 +1,17 @@
-# Node / Angular build artifacts
+# Dependencies and build output
 node_modules/
 dist/
-.angular/
 coverage/
 .cache/
 .parcel-cache/
+.angular/
 
-# Env and local config
+# Environment files
 .env
-.env.*.local
 .env.*
-*.local
 .envrc
 
-# Logs and debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# OS / editor noise
+# OS / editor files
 .DS_Store
 Thumbs.db
 *.swp
